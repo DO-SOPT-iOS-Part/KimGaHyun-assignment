@@ -12,7 +12,12 @@ class ViewController: UIViewController {
 
     private var backgroundView : UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Img")
+        
+        
+        //imageView.image = UIImage(named: "Img")
+        imageView.image = #imageLiteral(resourceName: "background")
+        
+        
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -48,4 +53,7 @@ class ViewController: UIViewController {
 
 
 }
+
+
+
 

@@ -13,6 +13,11 @@
 		838AA68C2ADB93B100CC766B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 838AA68B2ADB93B100CC766B /* Assets.xcassets */; };
 		838AA68F2ADB93B100CC766B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 838AA68D2ADB93B100CC766B /* LaunchScreen.storyboard */; };
 		838AA6972ADB976D00CC766B /* Img.png in Resources */ = {isa = PBXBuildFile; fileRef = 838AA6962ADB976D00CC766B /* Img.png */; };
+		838AA69A2ADD675800CC766B /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 838AA6992ADD675800CC766B /* SF-Pro-Display-Bold.otf */; };
+		838AA69C2ADD677B00CC766B /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 838AA69B2ADD677B00CC766B /* SF-Pro-Display-Light.otf */; };
+		838AA69E2ADD678900CC766B /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 838AA69D2ADD678900CC766B /* SF-Pro-Display-Medium.otf */; };
+		838AA6A02ADD679300CC766B /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 838AA69F2ADD679300CC766B /* SF-Pro-Display-Regular.otf */; };
+		838AA6A22ADD67A500CC766B /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 838AA6A12ADD67A500CC766B /* SF-Pro-Display-Thin.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		838AA68E2ADB93B100CC766B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		838AA6902ADB93B100CC766B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		838AA6962ADB976D00CC766B /* Img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Img.png; sourceTree = "<group>"; };
+		838AA6992ADD675800CC766B /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		838AA69B2ADD677B00CC766B /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
+		838AA69D2ADD678900CC766B /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
+		838AA69F2ADD679300CC766B /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		838AA6A12ADD67A500CC766B /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +66,7 @@
 		838AA6812ADB93AF00CC766B /* SOPT33_assignment2 */ = {
 			isa = PBXGroup;
 			children = (
+				838AA6A32ADD687A00CC766B /* Fonts */,
 				838AA6962ADB976D00CC766B /* Img.png */,
 				838AA6822ADB93AF00CC766B /* AppDelegate.swift */,
 				838AA6842ADB93AF00CC766B /* SceneDelegate.swift */,
@@ -65,6 +76,18 @@
 				838AA6902ADB93B100CC766B /* Info.plist */,
 			);
 			path = SOPT33_assignment2;
+			sourceTree = "<group>";
+		};
+		838AA6A32ADD687A00CC766B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				838AA6A12ADD67A500CC766B /* SF-Pro-Display-Thin.otf */,
+				838AA69F2ADD679300CC766B /* SF-Pro-Display-Regular.otf */,
+				838AA69D2ADD678900CC766B /* SF-Pro-Display-Medium.otf */,
+				838AA69B2ADD677B00CC766B /* SF-Pro-Display-Light.otf */,
+				838AA6992ADD675800CC766B /* SF-Pro-Display-Bold.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +148,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				838AA6A22ADD67A500CC766B /* SF-Pro-Display-Thin.otf in Resources */,
+				838AA69E2ADD678900CC766B /* SF-Pro-Display-Medium.otf in Resources */,
 				838AA6972ADB976D00CC766B /* Img.png in Resources */,
+				838AA69C2ADD677B00CC766B /* SF-Pro-Display-Light.otf in Resources */,
 				838AA68F2ADB93B100CC766B /* LaunchScreen.storyboard in Resources */,
+				838AA69A2ADD675800CC766B /* SF-Pro-Display-Bold.otf in Resources */,
+				838AA6A02ADD679300CC766B /* SF-Pro-Display-Regular.otf in Resources */,
 				838AA68C2ADB93B100CC766B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

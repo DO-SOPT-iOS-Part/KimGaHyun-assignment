@@ -45,6 +45,15 @@ class ViewController: UIViewController {
         setLayout()
 
         
+        // 폰트 체크 하기
+                UIFont.familyNames.sorted().forEach { familyName in
+                    print("*** \(familyName) ***")
+                    UIFont.fontNames(forFamilyName: familyName).forEach { fontName in
+                        print("\(fontName)")
+                    }
+                    print("——————————")
+                }
+        
         
        
     }
@@ -53,6 +62,7 @@ class ViewController: UIViewController {
 
 
 }
+
 
 
 

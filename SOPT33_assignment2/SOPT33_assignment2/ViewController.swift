@@ -7,61 +7,44 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UISearchControllerDelegate {
 
-
-    private var backgroundView : UIImageView = {
-        let imageView = UIImageView()
-        
-        
-        //imageView.image = UIImage(named: "Img")
-        imageView.image = #imageLiteral(resourceName: "background")
-        
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    private var searchBar : UISearchBar = {
+       let searchbar = UISearchBar()
+        searchbar.placeholder = "Search"
+        searchbar.translatesAutoresizingMaskIntoConstraints = false
+        return searchbar
     }()
 
+    let navigationBar : UINavigationBar = {
+        let navigationBar = UINavigationBar()
+        navigationBar.translatesAutoresizingMaskIntoConstraints = false
+        navigationBar.prefersLargeTitles = true
+        return navigationBar
+    }()
 
-    func setLayout() {
-        self.view.addSubview(backgroundView)
-        
-        //배경화면 레이아웃 잡기
-        NSLayoutConstraint.activate([
-            backgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            backgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            backgroundView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
-            backgroundView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height)
-        ])
-        
-        
-        
-    }
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLayout()
+        view.backgroundColor = .white
+        self.view.addSubview(navigationBar)
 
+        navigationItem.title = "날씨"
+        let safeArea = self.view.safeAreaLayoutGuide
+
+        navigationBar.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
+        navigationBar.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor).isActive = true
+        navigationBar.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor).isActive = true
+        navigationBar.setItems([navigationItem], animated: true)
         
-        // 폰트 체크 하기
-                UIFont.familyNames.sorted().forEach { familyName in
-                    print("*** \(familyName) ***")
-                    UIFont.fontNames(forFamilyName: familyName).forEach { fontName in
-                        print("\(fontName)")
-                    }
-                    print("——————————")
-                }
-        
-        
-       
+
+
     }
     
-    
-
 
 }
+
+
+
 
 
 

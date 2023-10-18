@@ -20,6 +20,7 @@
 		838AA6A22ADD67A500CC766B /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 838AA6A12ADD67A500CC766B /* SF-Pro-Display-Thin.otf */; };
 		838AA6A52ADD77A300CC766B /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AA6A42ADD77A300CC766B /* Font.swift */; };
 		838AA6A72ADD79C100CC766B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AA6A62ADD79C100CC766B /* ResultViewController.swift */; };
+		83BA693F2AE025E3000AD795 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 83BA693E2AE025E3000AD795 /* list.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		838AA6A12ADD67A500CC766B /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 		838AA6A42ADD77A300CC766B /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		838AA6A62ADD79C100CC766B /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		83BA693E2AE025E3000AD795 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			children = (
 				838AA6A32ADD687A00CC766B /* Fonts */,
 				838AA6962ADB976D00CC766B /* Img.png */,
+				83BA693E2AE025E3000AD795 /* list.png */,
 				838AA6822ADB93AF00CC766B /* AppDelegate.swift */,
 				838AA6842ADB93AF00CC766B /* SceneDelegate.swift */,
 				838AA6862ADB93AF00CC766B /* ViewController.swift */,
@@ -88,9 +91,9 @@
 			isa = PBXGroup;
 			children = (
 				838AA6A12ADD67A500CC766B /* SF-Pro-Display-Thin.otf */,
+				838AA69B2ADD677B00CC766B /* SF-Pro-Display-Light.otf */,
 				838AA69F2ADD679300CC766B /* SF-Pro-Display-Regular.otf */,
 				838AA69D2ADD678900CC766B /* SF-Pro-Display-Medium.otf */,
-				838AA69B2ADD677B00CC766B /* SF-Pro-Display-Light.otf */,
 				838AA6992ADD675800CC766B /* SF-Pro-Display-Bold.otf */,
 			);
 			path = Fonts;
@@ -156,6 +159,7 @@
 			files = (
 				838AA6A22ADD67A500CC766B /* SF-Pro-Display-Thin.otf in Resources */,
 				838AA69E2ADD678900CC766B /* SF-Pro-Display-Medium.otf in Resources */,
+				83BA693F2AE025E3000AD795 /* list.png in Resources */,
 				838AA6972ADB976D00CC766B /* Img.png in Resources */,
 				838AA69C2ADD677B00CC766B /* SF-Pro-Display-Light.otf in Resources */,
 				838AA68F2ADB93B100CC766B /* LaunchScreen.storyboard in Resources */,

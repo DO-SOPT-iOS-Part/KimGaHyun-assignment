@@ -9,6 +9,11 @@ import UIKit
 
 class ViewController: UIViewController, UISearchControllerDelegate {
     
+
+    
+    private let scrollView = UIScrollView()
+    private var contentView = UIImageView()
+    
     private var searchBar : UISearchBar = {
         let searchbar = UISearchBar()
         searchbar.placeholder = "도시 또는 공항 검색"
@@ -19,33 +24,39 @@ class ViewController: UIViewController, UISearchControllerDelegate {
         return searchbar
     }()
     
-    
-    
-    //    let navigationBar : UINavigationBar = {
-    //        let navigationBar = UINavigationBar()
-    //
-    //        navigationBar.prefersLargeTitles = true
-    //        return navigationBar
-    //    }()
-
-    
-    private let scrollView = UIScrollView()
-    private var contentView = UIView()
-    
-    private var listView : UIImageView = {
-        let listView = UIImageView()
-        listView.image = UIImage(named: "list")
-        listView.translatesAutoresizingMaskIntoConstraints = false
-        return listView
+    private lazy var testbutton : UIButton = {
+       let testbutton = UIButton()
+        testbutton.setTitle("Button", for: .normal)
+        testbutton.setTitleColor(.white, for: .normal)
+        testbutton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        testbutton.translatesAutoresizingMaskIntoConstraints = false
+        
+        return testbutton
     }()
+    
+    private lazy var listbutton : UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(named: "list"), for: .normal)
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.contentMode = .scaleAspectFit
+        return button
+    }()
+    
+    private lazy var etcButton : UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "menu"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     
     private var mainTitle : UILabel = {
         let label = UILabel()
         label.text = "날씨"
         label.font = .bold(size: 40)
-        label.textColor = .black
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
-        
         return label
     }()
     
@@ -75,48 +86,34 @@ class ViewController: UIViewController, UISearchControllerDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    
-    //왼쪽 스택뷰 : 나의 위치, 의정부시, 흐림
-    private var leftStackView: UIStackView = {
-        let leftstackview = UIStackView()
-        leftstackview.axis = .vertical
-        leftstackview.backgroundColor = .clear
-        leftstackview.distribution = .fillEqually
-        leftstackview.isUserInteractionEnabled = true
-        leftstackview.translatesAutoresizingMaskIntoConstraints = false
-        return leftstackview
-    }()
-    
 
     
     private var dcLabel : UILabel = {
         let label = UILabel()
         label.text = "21º"
-        label.font = .light(size: 50)
+        label.font = .light(size: 53)
         label.textColor = .white
+        label.textAlignment = .right
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     
-    //오른쪽 스택뷰 : 온도, 최고, 최저 온도
-    private var rightStackView: UIStackView = {
-        let rightstackview = UIStackView()
-        rightstackview.axis = .vertical
-        rightstackview.backgroundColor = .clear
-        rightstackview.distribution = .fillEqually
-        rightstackview.isUserInteractionEnabled = true
-        rightstackview.translatesAutoresizingMaskIntoConstraints = false
-        return rightstackview
+    private var maxminLabel : UILabel = {
+        let label = UILabel()
+        label.text = "최고:29º 최저:25º"
+        label.font = .regular(size: 16)
+        label.textColor = .white
+        label.backgroundColor = .clear
+        label.textAlignment = .right
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
-    
-    
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         setViewLayout()
         mainLayout()
         setSearchBarLayout()
@@ -127,80 +124,19 @@ class ViewController: UIViewController, UISearchControllerDelegate {
         
     }
     
+    @objc func buttonTapped() {
+        print("이미지 버튼이 클릭됐다. ")
+    }
     
-    
-//    @objc func listViewTapped() {
-//        let resultVC = ResultViewController()
-//        navigationController?.pushViewController(resultVC, animated: true)
-//    }
+
+    @objc func buttonPressed(_ gesture: UITapGestureRecognizer) {
+        let resultVC = ResultViewController()  // ResultViewController 초기화
+        navigationController?.pushViewController(resultVC, animated: true) // 화면에 표시
+        print("OK")
+    }
 
     
     
-//    private func setLayout() {
-//        self.view.addSubview(navigationBar)
-//        self.view.addSubview(scrollView)
-//        self.view.addSubview(searchBar)
-//        self.view.addSubview(contentView)
-//        self.view.addSubview(mainLabel)
-//        self.view.addSubview(locationLabel)
-//        self.view.addSubview(weatherLabel)
-//
-//        navigationBar.translatesAutoresizingMaskIntoConstraints = false
-//        scrollView.translatesAutoresizingMaskIntoConstraints = false
-//        contentView.translatesAutoresizingMaskIntoConstraints = false
-//
-//
-//        NSLayoutConstraint.activate([
-//            navigationBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-//            navigationBar.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-//            navigationBar.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
-//        ])
-//
-
-//
-//        NSLayoutConstraint.activate([
-//            scrollView.topAnchor.constraint(equalTo: navigationBar.topAnchor, constant: 150),
-//            scrollView.leadingAnchor.constraint(equalTo: navigationBar.leadingAnchor, constant: 10),
-//            scrollView.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor, constant: -20),
-//            scrollView.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: 10)])
-//
-//        NSLayoutConstraint.activate([
-//            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-//            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-//            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-//            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor)])
-//
-//        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-
-        
-//        [listView].forEach {
-//            $0.translatesAutoresizingMaskIntoConstraints = false
-//            contentView.addSubview($0)
-//        }
-//
-//        NSLayoutConstraint.activate([
-//            listView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-//            listView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-//            listView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-//            listView.heightAnchor.constraint(equalToConstant: 117),
-//            listView.widthAnchor.constraint(equalToConstant: 335)])
-//
-//
-//        //listView안에 label들 layout
-//        NSLayoutConstraint.activate([
-//            mainLabel.topAnchor.constraint(equalTo: listView.topAnchor, constant: 13),
-//            mainLabel.leadingAnchor.constraint(equalTo: listView.leadingAnchor, constant: 15),
-//            mainLabel.trailingAnchor.constraint(equalTo: listView.trailingAnchor, constant: 10),
-//
-//            locationLabel.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 5),
-//            locationLabel.leadingAnchor.constraint(equalTo: listView.leadingAnchor, constant: 15),
-//            locationLabel.trailingAnchor.constraint(equalTo: listView.trailingAnchor),
-//
-//            weatherLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 18),
-//            weatherLabel.leadingAnchor.constraint(equalTo: listView.leadingAnchor, constant: 15),
-//            weatherLabel.trailingAnchor.constraint(equalTo: listView.trailingAnchor)
-//        ])
-//    }
     
     func setViewLayout() {
         self.view.addSubview(scrollView)
@@ -231,17 +167,21 @@ class ViewController: UIViewController, UISearchControllerDelegate {
     }
     
     func mainLayout() {
+        contentView.addSubview(etcButton)
         contentView.addSubview(mainTitle)
         
         NSLayoutConstraint.activate([
-            mainTitle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            mainTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            etcButton.topAnchor.constraint(equalTo: contentView.topAnchor),
+            etcButton.leadingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50)
+        ])
+        
+        
+        NSLayoutConstraint.activate([
+            mainTitle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+            mainTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
             mainTitle.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             mainTitle.heightAnchor.constraint(equalToConstant: 44)
         ])
-    
-        
-        
     }
     
     
@@ -258,35 +198,53 @@ class ViewController: UIViewController, UISearchControllerDelegate {
     }
     
     func setWeatherLayout() {
-        contentView.addSubview(listView)
-        listView.addSubview(leftStackView)
-        listView.addSubview(rightStackView)
-        leftStackView.addArrangedSubview(mainLabel)
-        leftStackView.addArrangedSubview(locationLabel)
-        leftStackView.addArrangedSubview(weatherLabel)
-        
-        rightStackView.addArrangedSubview(dcLabel)
-        
-        NSLayoutConstraint.activate([
-            listView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10),
-            listView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            listView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            listView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height/7)
-        ])
+        contentView.addSubview(listbutton)
+
+        listbutton.addSubview(mainLabel)
+        listbutton.addSubview(locationLabel)
+        listbutton.addSubview(weatherLabel)
+        listbutton.addSubview(dcLabel)
+        listbutton.addSubview(maxminLabel)
+
         
         NSLayoutConstraint.activate([
-            leftStackView.topAnchor.constraint(equalTo: listView.topAnchor, constant: 10),
-            leftStackView.leadingAnchor.constraint(equalTo: listView.leadingAnchor, constant: 10),
-            leftStackView.trailingAnchor.constraint(equalTo: listView.trailingAnchor, constant: -50)
+            listbutton.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10),
+            listbutton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            listbutton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
         ])
         
         
         NSLayoutConstraint.activate([
-            rightStackView.topAnchor.constraint(equalTo: listView.topAnchor, constant: 5),
-            rightStackView.leadingAnchor.constraint(equalTo: listView.leadingAnchor, constant: 290),
-            rightStackView.trailingAnchor.constraint(equalTo: listView.trailingAnchor, constant: -10)
+            mainLabel.topAnchor.constraint(equalTo: listbutton.topAnchor, constant: 13),
+            mainLabel.leadingAnchor.constraint(equalTo: listbutton.leadingAnchor, constant: 13),
+            mainLabel.trailingAnchor.constraint(equalTo: listbutton.trailingAnchor, constant: -250),
+            
+            locationLabel.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 7),
+            locationLabel.leadingAnchor.constraint(equalTo: listbutton.leadingAnchor, constant: 13),
+            locationLabel.trailingAnchor.constraint(equalTo: mainLabel.trailingAnchor, constant: -10),
+            
+            weatherLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 20),
+            weatherLabel.leadingAnchor.constraint(equalTo: listbutton.leadingAnchor, constant: 13),
+            weatherLabel.trailingAnchor.constraint(equalTo: weatherLabel.trailingAnchor),
+            
+            dcLabel.topAnchor.constraint(equalTo: listbutton.topAnchor, constant: 7),
+            dcLabel.leadingAnchor.constraint(equalTo: listbutton.trailingAnchor, constant: -80),
+            
+            maxminLabel.topAnchor.constraint(equalTo: dcLabel.bottomAnchor, constant: 15),
+            maxminLabel.trailingAnchor.constraint(equalTo: dcLabel.trailingAnchor)
         ])
+        
+        
+        //test
+        view.addSubview(testbutton)
+        NSLayoutConstraint.activate([
+            testbutton.topAnchor.constraint(equalTo: listbutton.bottomAnchor, constant: 40),
+        ])
+        
+        
+    
     }
+
 
 }
 

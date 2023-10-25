@@ -20,6 +20,7 @@
 		838AA6A22ADD67A500CC766B /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 838AA6A12ADD67A500CC766B /* SF-Pro-Display-Thin.otf */; };
 		838AA6A52ADD77A300CC766B /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AA6A42ADD77A300CC766B /* Font.swift */; };
 		838AA6A72ADD79C100CC766B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AA6A62ADD79C100CC766B /* ResultViewController.swift */; };
+		83B9E87A2AE7E3CF0080170A /* bottomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B9E8792AE7E3CF0080170A /* bottomTabBarViewController.swift */; };
 		83BA693F2AE025E3000AD795 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 83BA693E2AE025E3000AD795 /* list.png */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		838AA6A12ADD67A500CC766B /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 		838AA6A42ADD77A300CC766B /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		838AA6A62ADD79C100CC766B /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		83B9E8792AE7E3CF0080170A /* bottomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottomTabBarViewController.swift; sourceTree = "<group>"; };
 		83BA693E2AE025E3000AD795 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 				838AA68B2ADB93B100CC766B /* Assets.xcassets */,
 				838AA68D2ADB93B100CC766B /* LaunchScreen.storyboard */,
 				838AA6902ADB93B100CC766B /* Info.plist */,
+				83B9E8792AE7E3CF0080170A /* bottomTabBarViewController.swift */,
 			);
 			path = SOPT33_assignment2;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83B9E87A2AE7E3CF0080170A /* bottomTabBarViewController.swift in Sources */,
 				838AA6A72ADD79C100CC766B /* ResultViewController.swift in Sources */,
 				838AA6A52ADD77A300CC766B /* Font.swift in Sources */,
 				838AA6872ADB93AF00CC766B /* ViewController.swift in Sources */,

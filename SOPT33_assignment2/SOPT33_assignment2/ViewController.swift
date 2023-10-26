@@ -8,45 +8,31 @@
 import UIKit
 
 class ViewController: UIViewController, UISearchControllerDelegate {
-    
 
-    
     private let scrollView = UIScrollView()
-    private var contentView = UIImageView()
+    private let contentView = UIImageView()
     
     private var searchBar : UISearchBar = {
         let searchbar = UISearchBar()
         searchbar.placeholder = "도시 또는 공항 검색"
         searchbar.searchTextField.textColor = .white
-        searchbar.searchTextField.backgroundColor = .gray
+        searchbar.searchTextField.backgroundColor = UIColor.darkGray.withAlphaComponent(0.3)
         searchbar.searchTextField.font = .regular(size: 19)
         searchbar.translatesAutoresizingMaskIntoConstraints = false
         return searchbar
     }()
     
-    private lazy var testbutton : UIButton = {
-       let testbutton = UIButton()
-        testbutton.setTitle("Button", for: .normal)
-        testbutton.setTitleColor(.white, for: .normal)
-        testbutton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        testbutton.translatesAutoresizingMaskIntoConstraints = false
-        
-        return testbutton
+    private lazy var listView : UIImageView = {
+        let imageview = UIImageView()
+        imageview.image = UIImage(named: "list")
+        imageview.translatesAutoresizingMaskIntoConstraints = false
+        return imageview
     }()
     
-    private lazy var listbutton : UIButton = {
-        let button = UIButton()
-        button.setBackgroundImage(UIImage(named: "list"), for: .normal)
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.contentMode = .scaleAspectFit
-        return button
-    }()
-    
+
     private lazy var etcButton : UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "menu"), for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
@@ -56,7 +42,6 @@ class ViewController: UIViewController, UISearchControllerDelegate {
         label.text = "날씨"
         label.font = .bold(size: 40)
         label.textColor = .white
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -65,25 +50,22 @@ class ViewController: UIViewController, UISearchControllerDelegate {
         label.text = "나의 위치"
         label.font = .bold(size: 23)
         label.textColor = .white
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private var locationLabel : UILabel = {
         let label = UILabel()
         label.text = "의정부시"
-        label.font = .medium(size: 16)
+        label.font = .medium(size: 17)
         label.textColor = .white
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private var weatherLabel : UILabel = {
         let label = UILabel()
         label.text = "흐림"
-        label.font = .medium(size: 16)
+        label.font = .medium(size: 17)
         label.textColor = .white
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
@@ -94,7 +76,6 @@ class ViewController: UIViewController, UISearchControllerDelegate {
         label.font = .light(size: 53)
         label.textColor = .white
         label.textAlignment = .right
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -102,11 +83,10 @@ class ViewController: UIViewController, UISearchControllerDelegate {
     private var maxminLabel : UILabel = {
         let label = UILabel()
         label.text = "최고:29º 최저:25º"
-        label.font = .regular(size: 16)
+        label.font = .medium(size: 16)
         label.textColor = .white
         label.backgroundColor = .clear
         label.textAlignment = .right
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -114,6 +94,11 @@ class ViewController: UIViewController, UISearchControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(buttonPressed))
+        listView.isUserInteractionEnabled = true
+        listView.addGestureRecognizer(tapGesture)
+        
         setViewLayout()
         mainLayout()
         setSearchBarLayout()
@@ -121,29 +106,18 @@ class ViewController: UIViewController, UISearchControllerDelegate {
         
        // navigationItem.title = "날씨"
         //navigationBar.setItems([navigationItem], animated: true)
-        
+    
     }
     
-    @objc func buttonTapped() {
-        print("이미지 버튼이 클릭됐다. ")
-    }
     
-
-    @objc func buttonPressed(_ gesture: UITapGestureRecognizer) {
+    @objc func buttonPressed() {
         let resultVC = ResultViewController()  // ResultViewController 초기화
         navigationController?.pushViewController(resultVC, animated: true) // 화면에 표시
-        print("OK")
     }
-
-    
-    
     
     func setViewLayout() {
         self.view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        
-        //navigationBar.translatesAutoresizingMaskIntoConstraints = false
-        
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -167,8 +141,12 @@ class ViewController: UIViewController, UISearchControllerDelegate {
     }
     
     func mainLayout() {
-        contentView.addSubview(etcButton)
-        contentView.addSubview(mainTitle)
+        [etcButton, mainTitle].forEach {
+            view.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+        view.addSubview(etcButton)
+        view.addSubview(mainTitle)
         
         NSLayoutConstraint.activate([
             etcButton.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -186,8 +164,8 @@ class ViewController: UIViewController, UISearchControllerDelegate {
     
     
     func setSearchBarLayout() {
-        contentView.addSubview(searchBar)
-        
+
+        view.addSubview(searchBar)
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: mainTitle.bottomAnchor, constant: 10),
             searchBar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -198,60 +176,37 @@ class ViewController: UIViewController, UISearchControllerDelegate {
     }
     
     func setWeatherLayout() {
-        contentView.addSubview(listbutton)
+        view.addSubview(listView)
 
-        listbutton.addSubview(mainLabel)
-        listbutton.addSubview(locationLabel)
-        listbutton.addSubview(weatherLabel)
-        listbutton.addSubview(dcLabel)
-        listbutton.addSubview(maxminLabel)
-
+        [mainLabel, locationLabel, weatherLabel, dcLabel, maxminLabel].forEach {
+            listView.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
         
         NSLayoutConstraint.activate([
-            listbutton.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10),
-            listbutton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            listbutton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            listView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10),
+            listView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            listView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
         ])
-        
-        
+
         NSLayoutConstraint.activate([
-            mainLabel.topAnchor.constraint(equalTo: listbutton.topAnchor, constant: 13),
-            mainLabel.leadingAnchor.constraint(equalTo: listbutton.leadingAnchor, constant: 13),
-            mainLabel.trailingAnchor.constraint(equalTo: listbutton.trailingAnchor, constant: -250),
+            mainLabel.topAnchor.constraint(equalTo: listView.topAnchor, constant: 13),
+            mainLabel.leadingAnchor.constraint(equalTo: listView.leadingAnchor, constant: 13),
+            mainLabel.trailingAnchor.constraint(equalTo: listView.trailingAnchor, constant: -250),
             
             locationLabel.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 7),
-            locationLabel.leadingAnchor.constraint(equalTo: listbutton.leadingAnchor, constant: 13),
+            locationLabel.leadingAnchor.constraint(equalTo: listView.leadingAnchor, constant: 13),
             locationLabel.trailingAnchor.constraint(equalTo: mainLabel.trailingAnchor, constant: -10),
             
             weatherLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 20),
-            weatherLabel.leadingAnchor.constraint(equalTo: listbutton.leadingAnchor, constant: 13),
+            weatherLabel.leadingAnchor.constraint(equalTo: listView.leadingAnchor, constant: 13),
             weatherLabel.trailingAnchor.constraint(equalTo: weatherLabel.trailingAnchor),
             
-            dcLabel.topAnchor.constraint(equalTo: listbutton.topAnchor, constant: 7),
-            dcLabel.leadingAnchor.constraint(equalTo: listbutton.trailingAnchor, constant: -80),
+            dcLabel.topAnchor.constraint(equalTo: listView.topAnchor, constant: 7),
+            dcLabel.leadingAnchor.constraint(equalTo: listView.trailingAnchor, constant: -80),
             
             maxminLabel.topAnchor.constraint(equalTo: dcLabel.bottomAnchor, constant: 15),
             maxminLabel.trailingAnchor.constraint(equalTo: dcLabel.trailingAnchor)
         ])
-        
-        
-        //test
-        view.addSubview(testbutton)
-        NSLayoutConstraint.activate([
-            testbutton.topAnchor.constraint(equalTo: listbutton.bottomAnchor, constant: 40),
-        ])
-        
-        
-    
     }
-
-
 }
-
-
-
-
-
-
-
-

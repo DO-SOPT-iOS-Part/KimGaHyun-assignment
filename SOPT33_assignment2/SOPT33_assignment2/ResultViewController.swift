@@ -15,7 +15,6 @@ class ResultViewController: UIViewController {
     private var backgroundView : UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "background")
-        //imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -23,10 +22,6 @@ class ResultViewController: UIViewController {
         let label = UILabel()
         label.text = "의정부시"
         label.font = .regular(size: 35)
-        label.textColor = .white
-        label.backgroundColor = .clear
-        label.textAlignment = .center
-        //label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -34,10 +29,6 @@ class ResultViewController: UIViewController {
         let label = UILabel()
         label.text = " 21º"
         label.font = .thin(size: 90)
-        label.textColor = .white
-        label.backgroundColor = .clear
-        label.textAlignment = .center
-        //label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
@@ -45,10 +36,6 @@ class ResultViewController: UIViewController {
         let label = UILabel()
         label.text = "흐림"
         label.font = .regular(size: 25)
-        label.textColor = .white
-        label.backgroundColor = .clear
-        label.textAlignment = .center
-        //label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -56,10 +43,6 @@ class ResultViewController: UIViewController {
         let label = UILabel()
         label.text = "최고:29º 최저:25º"
         label.font = .regular(size: 20)
-        label.textColor = .white
-        label.backgroundColor = .clear
-        label.textAlignment = .center
-        //label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -69,7 +52,6 @@ class ResultViewController: UIViewController {
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.white.withAlphaComponent(0.1).cgColor
         view.layer.cornerRadius = 20
-       // view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
@@ -79,217 +61,143 @@ class ResultViewController: UIViewController {
         label.numberOfLines = 2
         label.textColor = .white
         label.font = .regular(size: 19)
-//label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private var time1Label : UILabel = {
         let label = UILabel()
         label.text = "Now"
-        label.font = .medium(size: 17)
-        label.textColor = .white
-  //      label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private var time2Label : UILabel = {
         let label = UILabel()
         label.text = "10시"
-        label.font = .medium(size: 17)
-        label.textColor = .white
-    //    label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     private var time3Label : UILabel = {
         let label = UILabel()
         label.text = "11시"
-        label.font = .medium(size: 17)
-        label.textColor = .white
-      //  label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     private var time4Label : UILabel = {
         let label = UILabel()
         label.text = "12시"
-        label.font = .medium(size: 17)
-        label.textColor = .white
-        //label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private var time5Label : UILabel = {
         let label = UILabel()
         label.text = "1시"
-        label.font = .medium(size: 17)
-        label.textColor = .white
-        //label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+
+    private var time6Label : UILabel = {
+        let label = UILabel()
+        label.text = "7시"
+        return label
+    }()
+
     
     private var weather1Image : UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "cloud")
-        //imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private var weather2Image : UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "drizzle")
-    //    imageView.translatesAutoresizingMaskIntoConstraints = false
          return imageView
     }()
     
     private var weather3Image : UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "rain")
-      //  imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
     private var weather4Image : UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "thunder")
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private var weather5Image : UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "sunshower")
-  //      imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private var weather6Image : UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = #imageLiteral(resourceName: "rain")
         return imageView
     }()
     
     private var temp1Label : UILabel = {
         let label = UILabel()
         label.text = "21º"
-        label.font = .medium(size: 21)
-        label.textColor = .white
-    //    label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private var temp2Label : UILabel = {
         let label = UILabel()
         label.text = "21º"
-        label.font = .medium(size: 21)
-        label.textColor = .white
-      //  label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private var temp3Label : UILabel = {
         let label = UILabel()
         label.text = "19º"
-        label.font = .medium(size: 21)
-        label.textColor = .white
-//        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private var temp4Label : UILabel = {
         let label = UILabel()
         label.text = "19º"
-        label.font = .medium(size: 21)
-        label.textColor = .white
-  //      label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private var temp5Label : UILabel = {
         let label = UILabel()
         label.text = "19º"
-        label.font = .medium(size: 21)
-        label.textColor = .white
- //       label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    // Now, cloud, 21
-    private var firstStackView : UIStackView = {
-        let stackview = UIStackView()
-        stackview.axis = .vertical
-        stackview.backgroundColor = .clear
-        stackview.alignment = .center   //가운데 정렬
-        stackview.distribution = .fillEqually
-        stackview.isUserInteractionEnabled = true
- //       stackview.translatesAutoresizingMaskIntoConstraints = false
-        return stackview
+    private var temp6Label : UILabel = {
+        let label = UILabel()
+        label.text = "15º"
+        return label
     }()
     
-    // 10시, drizzle, 21
-    private var secondStackView : UIStackView = {
-        let stackview = UIStackView()
-        stackview.axis = .vertical
-        stackview.backgroundColor = .clear
-        stackview.alignment = .center   //가운데 정렬
-        stackview.distribution = .fillEqually
-        stackview.isUserInteractionEnabled = true
-   //     stackview.translatesAutoresizingMaskIntoConstraints = false
-        return stackview
-    }()
-    
-    // 11시, rain, 19
-    private var thirdStackView : UIStackView = {
-        let stackview = UIStackView()
-        stackview.axis = .vertical
-        stackview.backgroundColor = .clear
-        stackview.alignment = .center   //가운데 정렬
-        stackview.distribution = .fillEqually
-        stackview.isUserInteractionEnabled = true
-  //      stackview.translatesAutoresizingMaskIntoConstraints = false
-        return stackview
-    }()
-    
-    // 12시, thunder, 19
-    private var fourthStackView : UIStackView = {
-        let stackview = UIStackView()
-        stackview.axis = .vertical
-        stackview.backgroundColor = .clear
-        stackview.alignment = .center   //가운데 정렬
-        stackview.distribution = .fillEqually
-        stackview.isUserInteractionEnabled = true
-    //    stackview.translatesAutoresizingMaskIntoConstraints = false
-        return stackview
-    }()
-    
-    // 1시, sunshower, 19
-    private var fifthStackView : UIStackView = {
-        let stackview = UIStackView()
-        stackview.axis = .vertical
-        stackview.backgroundColor = .clear
-        stackview.alignment = .center   //가운데 정렬
-        stackview.distribution = .fillEqually
-        stackview.isUserInteractionEnabled = true
-   //     stackview.translatesAutoresizingMaskIntoConstraints = false
-        return stackview
-    }()
-    
+    private var firstStackView = UIStackView()   // Now, cloud, 21
+    private var secondStackView = UIStackView()  // 10시, drizzle, 21/
+    private var thirdStackView = UIStackView()   // 11시, rain, 19
+    private var fourthStackView = UIStackView()  // 12시, thunder, 19
+    private var fifthStackView = UIStackView()   // 1시, sunshower, 19
+    private var sixthStackView = UIStackView()   // 7시, rain, 15
     
     private var detailStackView : UIStackView = {
         let stackview = UIStackView()
         stackview.axis = .horizontal
         stackview.backgroundColor = .clear
         stackview.distribution = .equalSpacing
-        stackview.spacing = 10
-     //   stackview.translatesAutoresizingMaskIntoConstraints = false
+        stackview.spacing = 7
         return stackview
     }()
 
     private let divideView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white.withAlphaComponent(0.1)
-   //     view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let bottomdivideView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white.withAlphaComponent(0.1)
-     //   view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -297,31 +205,25 @@ class ResultViewController: UIViewController {
     private var mapImage: UIImageView = {
        let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "map")
- //       imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private var currentImage: UIImageView = {
        let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "current")
-   //     imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private var dotImage: UIImageView = {
        let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "other")
-   //     imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private lazy var menuButton : UIButton = {
         let button  = UIButton()
-        //imageView.image = #imageLiteral(resourceName: "list")
         button.setImage(UIImage(named: "pre"), for: .normal)
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
- //       button.translatesAutoresizingMaskIntoConstraints = false
-
         return button
     }()
     
@@ -331,7 +233,6 @@ class ResultViewController: UIViewController {
         stackview.backgroundColor = .clear
         stackview.isUserInteractionEnabled = true
         stackview.spacing = 10
- //       stackview.translatesAutoresizingMaskIntoConstraints = false
         return stackview
     }()
 
@@ -346,10 +247,7 @@ class ResultViewController: UIViewController {
     }
     
     @objc func buttonPressed() {
-        let firstVC = ViewController()
-        print("button pressed")
-        //self.navigationController?.popViewController(animated: true)
-        navigationController?.pushViewController(firstVC, animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     //기본 레이아웃
@@ -360,19 +258,9 @@ class ResultViewController: UIViewController {
         scrollView1.backgroundColor = .clear
         scrollView1.addSubview(contentView)
         contentView.backgroundColor = .clear
-        
-//
-//        scrollView1.translatesAutoresizingMaskIntoConstraints = false
-//        scrollView2.translatesAutoresizingMaskIntoConstraints = false
-//        contentView.translatesAutoresizingMaskIntoConstraints = false
-        
-        scrollView1.alwaysBounceVertical = true //세로 스크롤이 콘텐츠뷰의 끝에 도달할 때 튀어 오르기가 항상 발생하는지를 결정하는 부울 값
-        scrollView1.showsVerticalScrollIndicator = true //세로 스크롤 바 표시 여부를 제어하는 부울 값
-        
-        scrollView2.alwaysBounceHorizontal = true //가로 스크롤
-        scrollView2.showsHorizontalScrollIndicator = true //가로 스크롤
 
-        
+        scrollView2.showsHorizontalScrollIndicator = false //가로 스크롤 라인 false로 바꿈 
+
         [backgroundView, scrollView1, scrollView2, contentView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -398,11 +286,11 @@ class ResultViewController: UIViewController {
             contentView.trailingAnchor.constraint(equalTo: scrollView1.contentLayoutGuide.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView1.bottomAnchor)
         ])
-        
         let contentViewHeight = contentView.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor)
         contentViewHeight.priority = .defaultHigh
         contentViewHeight.isActive = true
     }
+    
     
     func weatherInfoLayout() {
         contentView.addSubview(locationLabel)
@@ -411,30 +299,29 @@ class ResultViewController: UIViewController {
         contentView.addSubview(maxminLabel)
         contentView.addSubview(descriptView)
         
-        [locationLabel, tempLabel, weatherLabel, maxminLabel, descriptView].forEach {
+        [locationLabel, tempLabel, weatherLabel, maxminLabel].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.textColor = .white
+            $0.backgroundColor = .clear
+            $0.textAlignment = .center
+            NSLayoutConstraint.activate([
+                $0.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+                $0.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            ])
         }
-        
+        descriptView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             locationLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50),
-            locationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            locationLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             locationLabel.heightAnchor.constraint(equalToConstant: 40),
             
             tempLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 5),
-            tempLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            tempLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             tempLabel.heightAnchor.constraint(equalToConstant: 100),
             
             weatherLabel.topAnchor.constraint(equalTo: tempLabel.bottomAnchor, constant: 5),
-            weatherLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            weatherLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             weatherLabel.heightAnchor.constraint(equalToConstant: 30),
             
             maxminLabel.topAnchor.constraint(equalTo: weatherLabel.bottomAnchor, constant: 5),
-            maxminLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            maxminLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             maxminLabel.heightAnchor.constraint(equalToConstant: 25),
             
             descriptView.topAnchor.constraint(equalTo: maxminLabel.bottomAnchor, constant: 50),
@@ -473,30 +360,49 @@ class ResultViewController: UIViewController {
             detailStackView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
         ])
         
-        detailStackView.addArrangeSubViews(firstStackView, secondStackView, thirdStackView, fourthStackView, fifthStackView)
+        detailStackView.addArrangeSubViews(firstStackView, secondStackView, thirdStackView, fourthStackView, fifthStackView, sixthStackView)
     }
 
 
     func stackLayout() {
-        [firstStackView, secondStackView, thirdStackView, fourthStackView, fifthStackView, time1Label, time2Label,time3Label, time4Label, time5Label, weather1Image, weather2Image, weather3Image, weather4Image, weather5Image, temp1Label, temp2Label, temp3Label, temp4Label, temp5Label].forEach {
+        [weather1Image, weather2Image, weather3Image, weather4Image, weather5Image, weather6Image].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
-  
-        scrollView1.addSubview(scrollView2)
-        scrollView2.showsHorizontalScrollIndicator = true
-        scrollView2.alwaysBounceVertical = true
-        //scrollView2.translatesAutoresizingMaskIntoConstraints = false
         
+        [time1Label, time2Label, time3Label, time4Label, time5Label, time6Label].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.font = .medium(size: 17)
+            $0.textColor = .white
+        }
+  
+        [temp1Label, temp2Label, temp3Label, temp4Label, temp5Label, temp6Label].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.font = .medium(size: 21)
+            $0.textColor = .white
+        }
+        
+        
+        [firstStackView, secondStackView, thirdStackView, fourthStackView, fifthStackView, sixthStackView].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.axis = .vertical
+            $0.backgroundColor = .clear
+            $0.alignment = .center
+            $0.distribution = .fillEqually
+            $0.isUserInteractionEnabled = true
+        }
+        
+        scrollView1.addSubview(scrollView2)
+
         firstStackView.addArrangeSubViews(time1Label, weather1Image, temp1Label)
         secondStackView.addArrangeSubViews(time2Label, weather2Image, temp2Label)
         thirdStackView.addArrangeSubViews(time3Label, weather3Image, temp3Label)
         fourthStackView.addArrangeSubViews(time4Label, weather4Image, temp4Label)
         fifthStackView.addArrangeSubViews(time5Label, weather5Image, temp5Label)
+        sixthStackView.addArrangeSubViews(time6Label, weather6Image, temp6Label)
 
         NSLayoutConstraint.activate([
             scrollView2.topAnchor.constraint(equalTo: divideView.bottomAnchor, constant: 10),
             scrollView2.centerXAnchor.constraint(equalTo: descriptView.centerXAnchor),
-            //scrollView2.trailingAnchor.constraint(equalTo: scrollView1.trailingAnchor),
             scrollView2.heightAnchor.constraint(equalToConstant: 212),
             scrollView2.widthAnchor.constraint(equalToConstant: 335)
         ])
@@ -521,12 +427,11 @@ class ResultViewController: UIViewController {
             bottomdivideView.heightAnchor.constraint(equalToConstant: 0.5),
             bottomdivideView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
             
-            bottomStackView.topAnchor.constraint(equalTo: bottomdivideView.bottomAnchor, constant: 2),
+            bottomStackView.topAnchor.constraint(equalTo: bottomdivideView.bottomAnchor, constant: 10),
             bottomStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             mapImage.topAnchor.constraint(equalTo: bottomdivideView.bottomAnchor, constant: 2),
             mapImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            
             
             menuButton.topAnchor.constraint(equalTo: bottomdivideView.bottomAnchor, constant: 2),
             menuButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)

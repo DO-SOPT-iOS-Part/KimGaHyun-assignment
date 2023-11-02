@@ -20,6 +20,10 @@
 		838AA6A22ADD67A500CC766B /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 838AA6A12ADD67A500CC766B /* SF-Pro-Display-Thin.otf */; };
 		838AA6A52ADD77A300CC766B /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AA6A42ADD77A300CC766B /* Font.swift */; };
 		838AA6A72ADD79C100CC766B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AA6A62ADD79C100CC766B /* ResultViewController.swift */; };
+		8394798B2AEFC31B00DE7A90 /* WeatherListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8394798A2AEFC31B00DE7A90 /* WeatherListTableViewCell.swift */; };
+		8394798D2AEFC38400DE7A90 /* WeatherListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8394798C2AEFC38400DE7A90 /* WeatherListData.swift */; };
+		839479922AEFF3C600DE7A90 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 839479912AEFF3C600DE7A90 /* Then */; };
+		839479952AEFF3D200DE7A90 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 839479942AEFF3D200DE7A90 /* SnapKit */; };
 		83BA693F2AE025E3000AD795 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 83BA693E2AE025E3000AD795 /* list.png */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +43,8 @@
 		838AA6A12ADD67A500CC766B /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 		838AA6A42ADD77A300CC766B /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		838AA6A62ADD79C100CC766B /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		8394798A2AEFC31B00DE7A90 /* WeatherListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListTableViewCell.swift; sourceTree = "<group>"; };
+		8394798C2AEFC38400DE7A90 /* WeatherListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListData.swift; sourceTree = "<group>"; };
 		83BA693E2AE025E3000AD795 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -47,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				839479922AEFF3C600DE7A90 /* Then in Frameworks */,
+				839479952AEFF3D200DE7A90 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +91,8 @@
 				838AA68B2ADB93B100CC766B /* Assets.xcassets */,
 				838AA68D2ADB93B100CC766B /* LaunchScreen.storyboard */,
 				838AA6902ADB93B100CC766B /* Info.plist */,
+				8394798A2AEFC31B00DE7A90 /* WeatherListTableViewCell.swift */,
+				8394798C2AEFC38400DE7A90 /* WeatherListData.swift */,
 			);
 			path = SOPT33_assignment2;
 			sourceTree = "<group>";
@@ -115,6 +125,10 @@
 			dependencies = (
 			);
 			name = SOPT33_assignment2;
+			packageProductDependencies = (
+				839479912AEFF3C600DE7A90 /* Then */,
+				839479942AEFF3D200DE7A90 /* SnapKit */,
+			);
 			productName = SOPT33_assignment2;
 			productReference = 838AA67F2ADB93AF00CC766B /* SOPT33_assignment2.app */;
 			productType = "com.apple.product-type.application";
@@ -143,6 +157,10 @@
 				Base,
 			);
 			mainGroup = 838AA6762ADB93AF00CC766B;
+			packageReferences = (
+				839479902AEFF3C600DE7A90 /* XCRemoteSwiftPackageReference "Then" */,
+				839479932AEFF3D200DE7A90 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 838AA6802ADB93AF00CC766B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -178,6 +196,8 @@
 			files = (
 				838AA6A72ADD79C100CC766B /* ResultViewController.swift in Sources */,
 				838AA6A52ADD77A300CC766B /* Font.swift in Sources */,
+				8394798B2AEFC31B00DE7A90 /* WeatherListTableViewCell.swift in Sources */,
+				8394798D2AEFC38400DE7A90 /* WeatherListData.swift in Sources */,
 				838AA6872ADB93AF00CC766B /* ViewController.swift in Sources */,
 				838AA6832ADB93AF00CC766B /* AppDelegate.swift in Sources */,
 				838AA6852ADB93AF00CC766B /* SceneDelegate.swift in Sources */,
@@ -388,6 +408,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		839479902AEFF3C600DE7A90 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		839479932AEFF3D200DE7A90 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		839479912AEFF3C600DE7A90 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 839479902AEFF3C600DE7A90 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		839479942AEFF3D200DE7A90 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 839479932AEFF3D200DE7A90 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 838AA6772ADB93AF00CC766B /* Project object */;
 }

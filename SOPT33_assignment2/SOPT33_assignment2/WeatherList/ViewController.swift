@@ -89,6 +89,9 @@ class ViewController: UIViewController, UISearchControllerDelegate {
 
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+//            $0.top.equalTo(mainTitle.snp.bottom).offset(6)
+//            $0.leading.trailing.equalToSuperview()
+
         }
     }
     

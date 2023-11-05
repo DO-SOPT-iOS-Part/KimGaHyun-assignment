@@ -22,12 +22,7 @@ class WeatherListTableViewCell: UITableViewCell {
         //$0.separatorColor = .lightGray
         $0.separatorStyle = .singleLine
     }
-    //각 리스트 별 스택뷰
-    private let stackView = UIStackView().then {
-        $0.axis = .vertical
-        $0.distribution = .equalSpacing
-        $0.spacing = 8
-    }
+
     
     private let mainLabel = UILabel().then {
         $0.font = .bold(size: 23)
@@ -75,7 +70,7 @@ class WeatherListTableViewCell: UITableViewCell {
     
         self.backgroundView = backgroundImage
 
-        [backgroundImage, stackView, temperatureLabel, maxminLabel].forEach {
+        [backgroundImage].forEach {
             self.contentView.addSubview($0)
         }
         

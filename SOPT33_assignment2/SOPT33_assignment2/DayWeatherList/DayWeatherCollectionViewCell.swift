@@ -18,6 +18,7 @@ class DayWeatherCollectionViewCell: UICollectionViewCell {
     private let weatherImage = UIImageView().then {
         $0.contentMode = .scaleAspectFit
     }
+
     
     private let mintemperatureLabel = UILabel().then {
         $0.font = .regular(size: 18)
@@ -56,29 +57,29 @@ class DayWeatherCollectionViewCell: UICollectionViewCell {
         
         weatherImage.snp.makeConstraints {
             $0.width.equalTo(35)
-            $0.leading.equalTo(dayLabel.snp.trailing).offset(10)
+            $0.top.equalToSuperview().inset(13)
+            $0.leading.equalTo(contentView.snp.leading).offset(70)
         }
         
         mintemperatureLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10)
-            $0.leading.equalTo(weatherImage.snp.trailing).offset(25)
+            $0.leading.equalTo(weatherImage.snp.trailing).offset(27)
         }
         tempbarImage.snp.makeConstraints {
             $0.top.equalToSuperview().inset(15)
             $0.width.equalTo(108)
             $0.height.equalTo(10)
-            $0.leading.equalTo(mintemperatureLabel.snp.trailing).offset(5)
+            $0.leading.equalTo(mintemperatureLabel.snp.trailing).offset(6)
         }
         maxtemperatureLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10)
-            $0.leading.equalTo(tempbarImage.snp.trailing).offset(5)
+            $0.leading.equalTo(tempbarImage.snp.trailing).offset(7)
         }
-        
     }
     
     func bindData(data: DayWeatherListData) {
         self.dayLabel.text = data.day
-        self.weatherImage.image = UIImage(named: data.weatherimg)
+        self.weatherImage.image = UIImage(systemName: data.weatherimg)?.withRenderingMode(.alwaysOriginal)
         self.mintemperatureLabel.text = data.mintemperature
         self.tempbarImage.image = UIImage(named: data.tempbar)
         self.maxtemperatureLabel.text = data.maxtemperature

@@ -105,7 +105,8 @@ class ResultViewController: UIViewController {
 
     private var weather5Image : UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "sunshower")
+        imageView.image = UIImage(systemName: "sun.max.fill")
+        imageView.tintColor = .yellow
         return imageView
     }()
 
@@ -183,6 +184,7 @@ class ResultViewController: UIViewController {
     private var mapImage: UIImageView = {
        let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "map")
+        imageView.tintColor = UIColor(named: "yellow")
         return imageView
     }()
 
@@ -229,6 +231,7 @@ class ResultViewController: UIViewController {
     }
 
     @objc func buttonPressed() {
+        print("BUTTON PRESSED")
         navigationController?.popViewController(animated: true)
     }
 
@@ -265,14 +268,11 @@ class ResultViewController: UIViewController {
 
 
     private func weatherInfoLayout() {
-        contentView.addSubview(locationLabel)
-        contentView.addSubview(tempLabel)
-        contentView.addSubview(weatherLabel)
-        contentView.addSubview(maxminLabel)
         
         contentView.addSubview(descriptView)
 
         [locationLabel, tempLabel, weatherLabel, maxminLabel].forEach {
+            contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.textColor = .white
             $0.backgroundColor = .clear
@@ -419,6 +419,7 @@ class ResultViewController: UIViewController {
         $0.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.25).cgColor
         $0.layer.cornerRadius = 20
         $0.layer.borderWidth = 0.5
+
     }
     
     
@@ -454,12 +455,11 @@ class ResultViewController: UIViewController {
         ])
     }
     
+    
     func setFont(label: UILabel, fonttype: String, size: CGFloat, text: String){
         label.font = UIFont(name: fonttype, size: size)
         label.text = text
     }
-    
-        
 }
 
 extension UIStackView {

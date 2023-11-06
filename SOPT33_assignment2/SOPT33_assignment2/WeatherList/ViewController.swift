@@ -10,7 +10,6 @@ import SnapKit
 
 class ViewController: UIViewController, UISearchControllerDelegate {
 
-    
     private var searchBar : UISearchBar = {
         let searchbar = UISearchBar()
         searchbar.placeholder = "도시 또는 공항 검색"
@@ -37,7 +36,7 @@ class ViewController: UIViewController, UISearchControllerDelegate {
         return label
     }()
     
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
@@ -54,6 +53,7 @@ class ViewController: UIViewController, UISearchControllerDelegate {
         let resultVC = ResultViewController()  // ResultViewController 초기화
         navigationController?.pushViewController(resultVC, animated: true) // 화면에 표시
     }
+   
     
     func mainLayout() {
         [etcButton, mainTitle].forEach {
@@ -83,15 +83,13 @@ class ViewController: UIViewController, UISearchControllerDelegate {
         }
     }
     
-    
     private func setLayout() {
         view.addSubview(tableView)
 
         tableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-//            $0.top.equalTo(mainTitle.snp.bottom).offset(6)
-//            $0.leading.trailing.equalToSuperview()
-
+            $0.top.equalTo(mainTitle.snp.bottom).offset(55)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.snp.bottom)
         }
     }
     
@@ -124,6 +122,12 @@ extension ViewController: UITableViewDataSource {
         
         cell.bindData(data: weatherList[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
+            print("Click Cell Number:" + String(indexPath.row))
+            buttonPressed()
     }
 }
 

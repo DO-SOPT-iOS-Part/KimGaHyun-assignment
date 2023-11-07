@@ -52,28 +52,28 @@ class DayWeatherCollectionViewCell: UICollectionViewCell {
         
         dayLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10)
-            $0.leading.equalToSuperview().inset(16)
+            $0.leading.equalTo(contentView.snp.leading).inset(20)
         }
         
         weatherImage.snp.makeConstraints {
             $0.width.equalTo(35)
-            $0.top.equalToSuperview().inset(13)
+            $0.top.equalToSuperview().inset(10)
             $0.leading.equalTo(contentView.snp.leading).offset(70)
         }
         
         mintemperatureLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10)
-            $0.leading.equalTo(weatherImage.snp.trailing).offset(27)
+            $0.leading.equalTo(weatherImage.snp.trailing).offset(20)
         }
         tempbarImage.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(15)
+            $0.top.equalToSuperview().inset(10)
             $0.width.equalTo(108)
             $0.height.equalTo(10)
-            $0.leading.equalTo(mintemperatureLabel.snp.trailing).offset(6)
+            $0.leading.equalTo(mintemperatureLabel.snp.trailing).offset(20)
         }
         maxtemperatureLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10)
-            $0.leading.equalTo(tempbarImage.snp.trailing).offset(7)
+            $0.leading.equalTo(tempbarImage.snp.trailing).offset(20)
         }
     }
     

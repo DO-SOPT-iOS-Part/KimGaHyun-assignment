@@ -28,13 +28,13 @@ struct DayWeatherListData {
     }
 }
 var DayweatherList : [DayWeatherListData] = [.init(day: "오늘", weatherimg: "sun.max.fill", weathercolor : "yellow", mintemperature: "15º", tempbar: "tempbar", maxtemperature: "29º"),
-                                             .init(day: "월", weatherimg: "cloud.rain", weathercolor : "black", mintemperature: "18º", tempbar: "tempbar", maxtemperature: "27º"),
-                                             .init(day: "화", weatherimg: "cloud.sun", weathercolor : "yellow", mintemperature: "20º", tempbar: "tempbar", maxtemperature: "25º"),
-                                             .init(day: "수", weatherimg: "cloud.snow", weathercolor : "yellow", mintemperature: "17º", tempbar: "tempbar", maxtemperature: "25º"),
-                                             .init(day: "목", weatherimg: "cloud.sun", weathercolor : "yellow", mintemperature: "17º", tempbar: "tempbar", maxtemperature: "25º"),
-                                             .init(day: "금", weatherimg: "cloud.sun", weathercolor : "yellow", mintemperature: "20º", tempbar: "tempbar", maxtemperature: "26º"),
+                                             .init(day: "월", weatherimg: "cloud.drizzle.fill", weathercolor : "black", mintemperature: "18º", tempbar: "tempbar", maxtemperature: "27º"),
+                                             .init(day: "화", weatherimg: "cloud.snow.fill", weathercolor : "yellow", mintemperature: "20º", tempbar: "tempbar", maxtemperature: "25º"),
+                                             .init(day: "수", weatherimg: "cloud.drizzle.fill", weathercolor : "yellow", mintemperature: "17º", tempbar: "tempbar", maxtemperature: "25º"),
+                                             .init(day: "목", weatherimg: "cloud.sun.fill", weathercolor : "yellow", mintemperature: "17º", tempbar: "tempbar", maxtemperature: "25º"),
+                                             .init(day: "금", weatherimg: "cloud.sun.fill", weathercolor : "yellow", mintemperature: "20º", tempbar: "tempbar", maxtemperature: "26º"),
                                              .init(day: "토", weatherimg: "sun.max.fill", weathercolor : "yellow", mintemperature: "18º", tempbar: "tempbar", maxtemperature: "25º"),
                                              .init(day: "일", weatherimg: "sun.max.fill", weathercolor : "yellow", mintemperature: "13º", tempbar: "tempbar", maxtemperature: "21º"),
-                                             .init(day: "월", weatherimg: "cloud.rain", weathercolor : "black", mintemperature: "12º", tempbar: "tempbar", maxtemperature: "19º"),
-                                             .init(day: "화", weatherimg: "cloud.rain", weathercolor : "black", mintemperature: "18º", tempbar: "tempbar", maxtemperature: "25º"),
-                                             .init(day: "수", weatherimg: "cloud.rain", weathercolor : "black", mintemperature: "18º", tempbar: "tempbar", maxtemperature: "25º")]
+                                             .init(day: "월", weatherimg: "cloud.drizzle.fill", weathercolor : "black", mintemperature: "12º", tempbar: "tempbar", maxtemperature: "19º"),
+                                             .init(day: "화", weatherimg: "cloud.drizzle.fill", weathercolor : "black", mintemperature: "18º", tempbar: "tempbar", maxtemperature: "25º"),
+                                             .init(day: "수", weatherimg: "cloud.drizzle.fill", weathercolor : "black", mintemperature: "18º", tempbar: "tempbar", maxtemperature: "25º")]

@@ -76,20 +76,27 @@ final class ResultViewController: UIViewController {
 
         self.navigationController?.navigationBar.isHidden = false
         
+        //CollectionView에 Cell
         self.detailCollecitonView.register(TopCollectionViewCell.self, forCellWithReuseIdentifier: TopCollectionViewCell.identifier)
-        
         self.detailCollecitonView.register(TimeWeatherCollectionViewCell.self, forCellWithReuseIdentifier: TimeWeatherCollectionViewCell.identifier)
-        
         self.detailCollecitonView.register(DayWeatherCollectionViewCell.self, forCellWithReuseIdentifier: DayWeatherCollectionViewCell.identifier)
+        
+    
+        //CollectionView의 각 section 별 header, footer
+        
+        self.detailCollecitonView.register(SecondCustomHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SecondCustomHeaderView.identifier)  //2번째 section
+        self.detailCollecitonView.register(SecondCustomFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SecondCustomFooterView.identifier) //2번째 section
+        
+        self.detailCollecitonView.register(CustomHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CustomHeaderView.identifier)  //3번째 section
+        self.detailCollecitonView.register(CustomFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CustomFooterView.identifier) //3번째 section
+        
         
         self.detailCollecitonView.delegate = self
         self.detailCollecitonView.dataSource = self
         self.detailCollecitonView.backgroundColor = .clear
-        
-        
-        
     }
     
+    //화면 뒤로 가기
     @objc func buttonPressed() {
         print("BUTTON PRESSED")
         navigationController?.popViewController(animated: true)
@@ -133,13 +140,11 @@ final class ResultViewController: UIViewController {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        
         bottomdivideView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(UIScreen.main.bounds.height-100)
             $0.height.equalTo(0.5)
             $0.width.equalTo(UIScreen.main.bounds.width)
         }
-        
         
         NSLayoutConstraint.activate([
             bottomStackView.topAnchor.constraint(equalTo: bottomdivideView.bottomAnchor, constant: 10),
@@ -154,18 +159,16 @@ final class ResultViewController: UIViewController {
     }
 }
 
-
 extension UIStackView {
     func addArrangeSubViews(_ views: UIView...) {
         views.forEach { self.addArrangedSubview($0) }
     }
 }
 
-
-extension ResultViewController : UICollectionViewDelegateFlowLayout {
+extension ResultViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
-        case 0 :
+        case 0:
             return CGSize(width: 375, height: 212)
         case 1:
             return CGSize(width: 335, height: 212)
@@ -179,9 +182,13 @@ extension ResultViewController : UICollectionViewDelegateFlowLayout {
 
 extension ResultViewController: UICollectionViewDelegate {}
 extension ResultViewController: UICollectionViewDataSource {
+    
+    //section 갯수
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
     }
+    
+    //section 별 cell 갯수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0 :
@@ -195,6 +202,7 @@ extension ResultViewController: UICollectionViewDataSource {
         }
     }
     
+    //데이터 넣어주기
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             guard let item = collectionView.dequeueReusableCell(withReuseIdentifier:  TopCollectionViewCell.identifier,for: indexPath) as? TopCollectionViewCell else {return UICollectionViewCell()}
@@ -211,9 +219,72 @@ extension ResultViewController: UICollectionViewDataSource {
             return item
             
         }
-        //        guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: DayWeatherCollectionViewCell.identifier,
-        //                                                            for: indexPath) as? DayWeatherCollectionViewCell else {return UICollectionViewCell()}
-        //item.bindData(data: DayweatherList[indexPath.row])
-        
     }
+    
+    
+    //1, 2, 3번째 섹션 별로 header, footer 넣어주기
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch indexPath.section {
+            //case 0은 헤더가 없으므로 생략
+        case 1 :
+            if kind == UICollectionView.elementKindSectionHeader {
+                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SecondCustomHeaderView.identifier, for: indexPath) as? SecondCustomHeaderView else {
+                    return SecondCustomHeaderView()
+                }
+                header.configure()
+                return header
+            } else {
+                guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SecondCustomFooterView.identifier, for: indexPath) as? SecondCustomFooterView else {
+                    return SecondCustomFooterView()
+                }
+                footer.configure()
+                return footer
+            }
+        case 2 :
+            if kind == UICollectionView.elementKindSectionHeader {
+                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CustomHeaderView.identifier, for: indexPath) as? CustomHeaderView else {
+                    return CustomHeaderView()
+                }
+                header.configure()
+                return header
+            } else {
+                guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CustomFooterView.identifier, for: indexPath) as? CustomFooterView else {
+                return CustomFooterView()
+                }
+                footer.configure()
+                return footer
+            }
+        default :
+            return CustomHeaderView()
+        }
+    }
+    
+    // 헤더의 크기를 지정
+       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+           switch section {
+           case 1 :
+               return CGSize(width: 300, height: 30)
+               
+           case 2 :
+               return CGSize(width: 300, height: 30)
+               
+           default :
+               return CGSize.zero
+           }
+     
+       }
+       
+       // 푸터의 크기를 지정
+       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+           switch section {
+           case 1 :
+               return CGSize(width: 300, height: 0)
+               
+           case 2 :
+               return CGSize(width: 300, height: 20)
+               
+           default :
+               return CGSize.zero
+           }
+       }
 }

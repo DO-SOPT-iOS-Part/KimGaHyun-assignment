@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		835E9E492AFBEE0300D5E4C5 /* HourCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E9E482AFBEE0300D5E4C5 /* HourCollectionViewCell.swift */; };
 		838AA6832ADB93AF00CC766B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AA6822ADB93AF00CC766B /* AppDelegate.swift */; };
 		838AA6852ADB93AF00CC766B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AA6842ADB93AF00CC766B /* SceneDelegate.swift */; };
 		838AA6872ADB93AF00CC766B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AA6862ADB93AF00CC766B /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		835E9E482AFBEE0300D5E4C5 /* HourCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCollectionViewCell.swift; sourceTree = "<group>"; };
 		838AA67F2ADB93AF00CC766B /* SOPT33_assignment2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOPT33_assignment2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		838AA6822ADB93AF00CC766B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		838AA6842ADB93AF00CC766B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				83DCC7B72AF8D270000EC679 /* TopCollectionViewCell.swift */,
 				83DCC7B92AF8D549000EC679 /* TimeWeatherCollectionViewCell.swift */,
 				83DCC7BB2AF8D715000EC679 /* TimeWeatherListData.swift */,
+				835E9E482AFBEE0300D5E4C5 /* HourCollectionViewCell.swift */,
 				8394799C2AF4A97800DE7A90 /* DayWeatherCollectionViewCell.swift */,
 				8394799A2AF3F0CD00DE7A90 /* DayWeatherListData.swift */,
 			);
@@ -234,6 +237,7 @@
 				8394798D2AEFC38400DE7A90 /* WeatherListData.swift in Sources */,
 				838AA6872ADB93AF00CC766B /* ViewController.swift in Sources */,
 				838AA6832ADB93AF00CC766B /* AppDelegate.swift in Sources */,
+				835E9E492AFBEE0300D5E4C5 /* HourCollectionViewCell.swift in Sources */,
 				8394799D2AF4A97800DE7A90 /* DayWeatherCollectionViewCell.swift in Sources */,
 				838AA6852ADB93AF00CC766B /* SceneDelegate.swift in Sources */,
 				83DCC7BA2AF8D549000EC679 /* TimeWeatherCollectionViewCell.swift in Sources */,

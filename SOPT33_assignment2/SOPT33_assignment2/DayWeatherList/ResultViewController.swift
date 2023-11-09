@@ -7,7 +7,7 @@
 import UIKit
 import SnapKit
 
-class ResultViewController: UIViewController {
+final class ResultViewController: UIViewController {
     private var contentView = UIImageView()
     
     private var backgroundView : UIImageView = {
@@ -84,6 +84,8 @@ class ResultViewController: UIViewController {
         
         self.detailCollecitonView.delegate = self
         self.detailCollecitonView.dataSource = self
+        self.detailCollecitonView.backgroundColor = .clear
+        
         
         
     }
@@ -103,11 +105,9 @@ class ResultViewController: UIViewController {
             $0.centerX.centerY.width.height.equalToSuperview()
         }
         
-        
         contentView.snp.makeConstraints {
             $0.top.bottom.leading.trailing.width.equalTo(view)
             $0.height.greaterThanOrEqualTo(view).priority(.high) //?
-            
         }
     }
     
@@ -152,8 +152,8 @@ class ResultViewController: UIViewController {
             menuButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
     }
-    
 }
+
 
 extension UIStackView {
     func addArrangeSubViews(_ views: UIView...) {

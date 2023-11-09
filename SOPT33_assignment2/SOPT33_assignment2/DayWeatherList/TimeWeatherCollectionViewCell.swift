@@ -6,20 +6,12 @@
 //
 
 import UIKit
+import SnapKit
 
-class TimeWeatherCollectionViewCell: UICollectionViewCell {
-    
+final class TimeWeatherCollectionViewCell: UICollectionViewCell {
     
     static let identifier: String = "TimeWeatherCollectionViewCell"
-    private var verticalStackView : UIStackView = {
-        let stackview = UIStackView()
-        stackview.axis = .vertical
-        stackview.spacing = 10
-        stackview.distribution = .equalCentering
-        return stackview
-    }()
-   
-    
+
     //header로 뺄 거
     private var descriptLabel : UILabel = {
         let label = UILabel()
@@ -39,125 +31,69 @@ class TimeWeatherCollectionViewCell: UICollectionViewCell {
     }()
 
     private var weatherImage = UIImageView()
-    
     private var tempLabel = UILabel()
+    
+
+    private let detailCollecitonView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 30)/4, height: (UIScreen.main.bounds.height - 6)/5)
+        flowLayout.minimumLineSpacing = 5
+        flowLayout.minimumInteritemSpacing = 5
+        flowLayout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        return collectionView
+    }()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setLayout()
-    
+
         self.layer.cornerRadius = 20
         self.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2).cgColor
         self.layer.borderWidth = 0.5
-
+        
+        self.detailCollecitonView.register(HourCollectionViewCell.self, forCellWithReuseIdentifier: HourCollectionViewCell.identifier)
+ 
+        self.detailCollecitonView.backgroundColor = .clear
+        self.detailCollecitonView.delegate = self
+        self.detailCollecitonView.dataSource = self
+        self.setcollectionLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    private func setLayout() {
-        contentView.addSubview(verticalStackView)
-
-        [timeLabel, weatherImage, tempLabel].forEach {
-            self.verticalStackView.addArrangedSubview($0)
+    private func setcollectionLayout() {
+        self.contentView.addSubview(detailCollecitonView)
+        detailCollecitonView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
-        
-        verticalStackView.snp.makeConstraints {
-            $0.top.equalTo(contentView.snp.top).inset(5)
-            $0.leading.equalTo(contentView.snp.leading).inset(5)
-        }
-
-        
-        
-//        [timeLabel, weatherImage, tempLabel].forEach {
-//            self.contentView.addSubview($0)
-//        }
-
-
-        
-//        timeLabel.snp.makeConstraints {
-//            $0.top.equalTo(contentView.snp.top).inset(20)
-//            $0.leading.equalTo(contentView.snp.leading).offset(20)
-//        }
-//
-//        weatherImage.snp.makeConstraints {
-//            $0.top.equalTo(timeLabel.snp.bottom).offset(10)
-//            $0.leading.equalTo(timeLabel.snp.leading)
-//        }
-//
-//        tempLabel.snp.makeConstraints {
-//            $0.top.equalTo(weatherImage.snp.bottom).offset(10)
-//            $0.leading.equalTo(weatherImage.snp.leading)
-//
-//        }
-        
     }
     
-
-    
-
-
     
     
     func bindData(data: TimeWeatherListData) {
         self.timeLabel.text = data.time
         self.weatherImage.image = UIImage(systemName: data.weatherImage)?.withRenderingMode(.alwaysOriginal)
         self.tempLabel.text = data.temperature
-        //setStack(time: data.time, img: data.weatherImage, temperature: data.temperature)
-
     }
     
+}
 
-    func setStack(time: String, img: String, temperature: String) -> UIStackView {
-        let stackview = UIStackView()
-        stackview.axis = .vertical
-        stackview.spacing = 10
-        stackview.distribution = .fillEqually
-        
-        
-        let timeLabel = UILabel()
-        timeLabel.text = time
-        timeLabel.font = .medium(size: 17)
-        timeLabel.textColor = .white
-        timeLabel.textAlignment = .center
-        
-        let weatherimageView = UIImageView()
-        let image = UIImage(named: img)
-        weatherimageView.image = image?.withRenderingMode(.alwaysOriginal)
-        
-        
-        let tempLabel = UILabel()
-        tempLabel.text = temperature
-        tempLabel.font = .medium(size: 22)
-        tempLabel.textColor = .white
-        tempLabel.textAlignment = .center
-        
-        [timeLabel, weatherImage, tempLabel].forEach {
-            stackview.addArrangedSubview($0)
-            $0.snp.makeConstraints {
-                $0.width.equalTo(44)
-            }
-        }
-        return stackview
+
+extension TimeWeatherCollectionViewCell: UICollectionViewDelegate {}
+extension TimeWeatherCollectionViewCell: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return TimeweatherList.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: HourCollectionViewCell.identifier,for: indexPath) as? HourCollectionViewCell else {return UICollectionViewCell()}
+        item.bindData(data: TimeweatherList[indexPath.row])
+        return item
     }
 }
 
 
-//extension TimeWeatherCollectionViewCell: UICollectionViewDelegate {}
-//extension TimeWeatherCollectionViewCell: UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return TimeweatherList.count
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: TimeWeatherCollectionViewCell.identifier,for: indexPath) as? TimeWeatherCollectionViewCell else {return UICollectionViewCell()}
-//        item.bindData(data: TimeweatherList[indexPath.row])
-//        return item
-//    }
-//
-//
-//
-//
-//}

@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		834960802AFD42E300A78244 /* CustomFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8349607F2AFD42E300A78244 /* CustomFooterView.swift */; };
+		834960852AFD4BAE00A78244 /* SecondCustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834960842AFD4BAE00A78244 /* SecondCustomHeaderView.swift */; };
+		834960872AFD4BBC00A78244 /* SecondCustomFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834960862AFD4BBC00A78244 /* SecondCustomFooterView.swift */; };
 		835E9E492AFBEE0300D5E4C5 /* HourCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E9E482AFBEE0300D5E4C5 /* HourCollectionViewCell.swift */; };
+		835E9E4B2AFCCB8200D5E4C5 /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E9E4A2AFCCB8200D5E4C5 /* CustomHeaderView.swift */; };
 		838AA6832ADB93AF00CC766B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AA6822ADB93AF00CC766B /* AppDelegate.swift */; };
 		838AA6852ADB93AF00CC766B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AA6842ADB93AF00CC766B /* SceneDelegate.swift */; };
 		838AA6872ADB93AF00CC766B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AA6862ADB93AF00CC766B /* ViewController.swift */; };
@@ -34,7 +38,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8349607F2AFD42E300A78244 /* CustomFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFooterView.swift; sourceTree = "<group>"; };
+		834960842AFD4BAE00A78244 /* SecondCustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCustomHeaderView.swift; sourceTree = "<group>"; };
+		834960862AFD4BBC00A78244 /* SecondCustomFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCustomFooterView.swift; sourceTree = "<group>"; };
 		835E9E482AFBEE0300D5E4C5 /* HourCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCollectionViewCell.swift; sourceTree = "<group>"; };
+		835E9E4A2AFCCB8200D5E4C5 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		838AA67F2ADB93AF00CC766B /* SOPT33_assignment2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOPT33_assignment2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		838AA6822ADB93AF00CC766B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		838AA6842ADB93AF00CC766B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +81,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		834960812AFD4B3900A78244 /* FirstSection */ = {
+			isa = PBXGroup;
+			children = (
+				83DCC7B72AF8D270000EC679 /* TopCollectionViewCell.swift */,
+			);
+			path = FirstSection;
+			sourceTree = "<group>";
+		};
+		834960822AFD4B4400A78244 /* SecondSection */ = {
+			isa = PBXGroup;
+			children = (
+				83DCC7B92AF8D549000EC679 /* TimeWeatherCollectionViewCell.swift */,
+				83DCC7BB2AF8D715000EC679 /* TimeWeatherListData.swift */,
+				835E9E482AFBEE0300D5E4C5 /* HourCollectionViewCell.swift */,
+				834960842AFD4BAE00A78244 /* SecondCustomHeaderView.swift */,
+				834960862AFD4BBC00A78244 /* SecondCustomFooterView.swift */,
+			);
+			path = SecondSection;
+			sourceTree = "<group>";
+		};
+		834960832AFD4B5800A78244 /* ThirdSection */ = {
+			isa = PBXGroup;
+			children = (
+				8394799C2AF4A97800DE7A90 /* DayWeatherCollectionViewCell.swift */,
+				8394799A2AF3F0CD00DE7A90 /* DayWeatherListData.swift */,
+				835E9E4A2AFCCB8200D5E4C5 /* CustomHeaderView.swift */,
+				8349607F2AFD42E300A78244 /* CustomFooterView.swift */,
+			);
+			path = ThirdSection;
+			sourceTree = "<group>";
+		};
 		838AA6762ADB93AF00CC766B = {
 			isa = PBXGroup;
 			children = (
@@ -133,12 +172,9 @@
 			isa = PBXGroup;
 			children = (
 				838AA6A62ADD79C100CC766B /* ResultViewController.swift */,
-				83DCC7B72AF8D270000EC679 /* TopCollectionViewCell.swift */,
-				83DCC7B92AF8D549000EC679 /* TimeWeatherCollectionViewCell.swift */,
-				83DCC7BB2AF8D715000EC679 /* TimeWeatherListData.swift */,
-				835E9E482AFBEE0300D5E4C5 /* HourCollectionViewCell.swift */,
-				8394799C2AF4A97800DE7A90 /* DayWeatherCollectionViewCell.swift */,
-				8394799A2AF3F0CD00DE7A90 /* DayWeatherListData.swift */,
+				834960812AFD4B3900A78244 /* FirstSection */,
+				834960822AFD4B4400A78244 /* SecondSection */,
+				834960832AFD4B5800A78244 /* ThirdSection */,
 			);
 			path = DayWeatherList;
 			sourceTree = "<group>";
@@ -230,14 +266,18 @@
 			files = (
 				838AA6A72ADD79C100CC766B /* ResultViewController.swift in Sources */,
 				838AA6A52ADD77A300CC766B /* Font.swift in Sources */,
+				834960852AFD4BAE00A78244 /* SecondCustomHeaderView.swift in Sources */,
 				83DCC7B82AF8D270000EC679 /* TopCollectionViewCell.swift in Sources */,
 				8394798B2AEFC31B00DE7A90 /* WeatherListTableViewCell.swift in Sources */,
 				8394799B2AF3F0CD00DE7A90 /* DayWeatherListData.swift in Sources */,
 				83DCC7BC2AF8D715000EC679 /* TimeWeatherListData.swift in Sources */,
 				8394798D2AEFC38400DE7A90 /* WeatherListData.swift in Sources */,
 				838AA6872ADB93AF00CC766B /* ViewController.swift in Sources */,
+				835E9E4B2AFCCB8200D5E4C5 /* CustomHeaderView.swift in Sources */,
+				834960802AFD42E300A78244 /* CustomFooterView.swift in Sources */,
 				838AA6832ADB93AF00CC766B /* AppDelegate.swift in Sources */,
 				835E9E492AFBEE0300D5E4C5 /* HourCollectionViewCell.swift in Sources */,
+				834960872AFD4BBC00A78244 /* SecondCustomFooterView.swift in Sources */,
 				8394799D2AF4A97800DE7A90 /* DayWeatherCollectionViewCell.swift in Sources */,
 				838AA6852ADB93AF00CC766B /* SceneDelegate.swift in Sources */,
 				83DCC7BA2AF8D549000EC679 /* TimeWeatherCollectionViewCell.swift in Sources */,

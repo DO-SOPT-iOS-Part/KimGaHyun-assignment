@@ -11,16 +11,6 @@ import SnapKit
 final class TimeWeatherCollectionViewCell: UICollectionViewCell {
     
     static let identifier: String = "TimeWeatherCollectionViewCell"
-
-    //header로 뺄 거
-    private var descriptLabel : UILabel = {
-        let label = UILabel()
-        label.text = "08:00~09:00에 강우 상태가, 18:00에 한\n때 흐린 상태가 예상됩니다. "
-        label.numberOfLines = 2
-        label.textColor = .white
-        label.font = .regular(size: 19)
-        return label
-    }()
     
     private var timeLabel : UILabel = {
         let label = UILabel()
@@ -30,13 +20,21 @@ final class TimeWeatherCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
+    
     private var weatherImage = UIImageView()
-    private var tempLabel = UILabel()
+    private var tempLabel : UILabel = {
+        let label = UILabel()
+        label.font = .medium(size: 20)
+        label.textColor = .white
+        label.textAlignment = .center
+        return label
+    }()
     
 
     private let detailCollecitonView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 30)/4, height: (UIScreen.main.bounds.height - 6)/5)
+        flowLayout.itemSize =
+        CGSize(width: (UIScreen.main.bounds.width - 30)/4, height: (UIScreen.main.bounds.height - 6)/5)
         flowLayout.minimumLineSpacing = 5
         flowLayout.minimumInteritemSpacing = 5
         flowLayout.scrollDirection = .horizontal
@@ -53,7 +51,7 @@ final class TimeWeatherCollectionViewCell: UICollectionViewCell {
         self.layer.borderWidth = 0.5
         
         self.detailCollecitonView.register(HourCollectionViewCell.self, forCellWithReuseIdentifier: HourCollectionViewCell.identifier)
- 
+  
         self.detailCollecitonView.backgroundColor = .clear
         self.detailCollecitonView.delegate = self
         self.detailCollecitonView.dataSource = self
@@ -67,19 +65,23 @@ final class TimeWeatherCollectionViewCell: UICollectionViewCell {
     private func setcollectionLayout() {
         self.contentView.addSubview(detailCollecitonView)
         detailCollecitonView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
+            $0.top.trailing.equalToSuperview()
+            $0.leading.equalToSuperview().inset(15)
             $0.bottom.equalToSuperview()
         }
     }
-    
-    
     
     func bindData(data: TimeWeatherListData) {
         self.timeLabel.text = data.time
         self.weatherImage.image = UIImage(systemName: data.weatherImage)?.withRenderingMode(.alwaysOriginal)
         self.tempLabel.text = data.temperature
     }
-    
+}
+
+extension TimeWeatherCollectionViewCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 55, height: 120)
+    }
 }
 
 
@@ -95,5 +97,3 @@ extension TimeWeatherCollectionViewCell: UICollectionViewDataSource {
         return item
     }
 }
-
-

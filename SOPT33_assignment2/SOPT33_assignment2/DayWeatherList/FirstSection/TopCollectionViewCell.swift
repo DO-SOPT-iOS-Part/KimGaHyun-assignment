@@ -51,7 +51,7 @@ class TopCollectionViewCell: UICollectionViewCell {
 
         
         locationLabel.snp.makeConstraints {
-            $0.top.equalTo(contentView.snp.top).inset(30)
+            $0.top.equalTo(contentView.snp.top)
         }
         
         tempLabel.snp.makeConstraints {

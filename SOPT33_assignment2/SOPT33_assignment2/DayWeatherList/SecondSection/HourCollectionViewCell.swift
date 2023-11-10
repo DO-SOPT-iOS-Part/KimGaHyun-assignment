@@ -58,18 +58,3 @@ class HourCollectionViewCell: UICollectionViewCell {
     }
 }
 
-//extension HourCollectionViewCell: UICollectionViewDelegate {}
-//extension HourCollectionViewCell: UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 10
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: HourCollectionViewCell.identifier,for: indexPath) as? HourCollectionViewCell else {return UICollectionViewCell()}
-//        item.bindData(data: TimeweatherList[indexPath.row])
-//        return item
-//    }
-//
-    
-//}
-

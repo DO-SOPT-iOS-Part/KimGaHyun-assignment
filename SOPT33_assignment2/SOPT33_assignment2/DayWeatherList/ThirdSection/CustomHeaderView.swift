@@ -2,7 +2,7 @@
 //  CustomHeaderView.swift
 //  SOPT33_assignment2
 //
-//  Created by Gahyun Kim on 2023/11/09.
+//  Created by 몰입가현 on 2023/11/09.
 //
 
 import UIKit
@@ -13,7 +13,8 @@ class CustomHeaderView: UICollectionReusableView {
     static let identifier: String = "CustomHeaderView"
     let midLabel : UILabel = {
         let label = UILabel()
-        label.text = "10일간의 일기예보 "
+//        label.text = "비하와 비난과 질타를 멈춰주세요 "
+        label.text = "10일간의 일기예보"
         label.textColor = .systemGray2
         label.font = .regular(size: 15)
         return label

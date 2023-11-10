@@ -30,7 +30,3 @@ var TimeweatherList : [TimeWeatherListData] = [.init(time: "NOW", weatherImage: 
                                                .init(time: "16시", weatherImage: "cloud.sun.fill", temperature: "20º"),
 ]
 
-
-
-
-//.init(day: "오늘", weatherimg: "sun.max.fill", weathercolor : "yellow", mintemperature: "15º", tempbar: "tempbar", maxtemperature: "29º"),

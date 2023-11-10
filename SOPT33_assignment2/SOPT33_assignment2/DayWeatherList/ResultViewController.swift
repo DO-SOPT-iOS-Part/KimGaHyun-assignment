@@ -83,7 +83,6 @@ final class ResultViewController: UIViewController {
         
     
         //CollectionView의 각 section 별 header, footer
-        
         self.detailCollecitonView.register(SecondCustomHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SecondCustomHeaderView.identifier)  //2번째 section
         self.detailCollecitonView.register(SecondCustomFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SecondCustomFooterView.identifier) //2번째 section
         

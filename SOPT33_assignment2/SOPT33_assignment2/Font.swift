@@ -7,7 +7,6 @@
 
 import UIKit
 
-// MARK: - 폰트 명을 열거형으로 선언
 
 enum AppFontName: String {
     

@@ -40,6 +40,8 @@ class ViewController: UIViewController, UISearchControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String else { return }
+        print(apiKey)
 
         mainLayout()
         setSearchBarLayout()

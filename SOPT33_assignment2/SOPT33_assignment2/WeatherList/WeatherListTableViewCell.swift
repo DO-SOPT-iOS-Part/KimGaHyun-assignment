@@ -26,7 +26,6 @@ class WeatherListTableViewCell: UITableViewCell {
     
     private let mainLabel = UILabel().then {
         $0.font = .bold(size: 23)
-       // $0.text = "나의 위치"
         $0.textColor = .white
     }
     

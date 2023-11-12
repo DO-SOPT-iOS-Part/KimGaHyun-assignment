@@ -10,6 +10,8 @@
 		834960802AFD42E300A78244 /* CustomFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8349607F2AFD42E300A78244 /* CustomFooterView.swift */; };
 		834960852AFD4BAE00A78244 /* SecondCustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834960842AFD4BAE00A78244 /* SecondCustomHeaderView.swift */; };
 		834960872AFD4BBC00A78244 /* SecondCustomFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834960862AFD4BBC00A78244 /* SecondCustomFooterView.swift */; };
+		834960C12B011B6500A78244 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834960C02B011B6500A78244 /* WeatherService.swift */; };
+		834960C32B011D2A00A78244 /* OpenWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834960C22B011D2A00A78244 /* OpenWeatherData.swift */; };
 		835E9E492AFBEE0300D5E4C5 /* HourCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E9E482AFBEE0300D5E4C5 /* HourCollectionViewCell.swift */; };
 		835E9E4B2AFCCB8200D5E4C5 /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E9E4A2AFCCB8200D5E4C5 /* CustomHeaderView.swift */; };
 		838AA6832ADB93AF00CC766B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AA6822ADB93AF00CC766B /* AppDelegate.swift */; };
@@ -41,6 +43,9 @@
 		8349607F2AFD42E300A78244 /* CustomFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFooterView.swift; sourceTree = "<group>"; };
 		834960842AFD4BAE00A78244 /* SecondCustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCustomHeaderView.swift; sourceTree = "<group>"; };
 		834960862AFD4BBC00A78244 /* SecondCustomFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCustomFooterView.swift; sourceTree = "<group>"; };
+		834960C02B011B6500A78244 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		834960C22B011D2A00A78244 /* OpenWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherData.swift; sourceTree = "<group>"; };
+		834960C42B011DDD00A78244 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		835E9E482AFBEE0300D5E4C5 /* HourCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCollectionViewCell.swift; sourceTree = "<group>"; };
 		835E9E4A2AFCCB8200D5E4C5 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		838AA67F2ADB93AF00CC766B /* SOPT33_assignment2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOPT33_assignment2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +120,7 @@
 		838AA6762ADB93AF00CC766B = {
 			isa = PBXGroup;
 			children = (
+				834960C42B011DDD00A78244 /* Secrets.xcconfig */,
 				838AA6812ADB93AF00CC766B /* SOPT33_assignment2 */,
 				838AA6802ADB93AF00CC766B /* Products */,
 			);
@@ -142,6 +148,8 @@
 				838AA68B2ADB93B100CC766B /* Assets.xcassets */,
 				838AA68D2ADB93B100CC766B /* LaunchScreen.storyboard */,
 				838AA6902ADB93B100CC766B /* Info.plist */,
+				834960C02B011B6500A78244 /* WeatherService.swift */,
+				834960C22B011D2A00A78244 /* OpenWeatherData.swift */,
 			);
 			path = SOPT33_assignment2;
 			sourceTree = "<group>";
@@ -274,9 +282,11 @@
 				8394798D2AEFC38400DE7A90 /* WeatherListData.swift in Sources */,
 				838AA6872ADB93AF00CC766B /* ViewController.swift in Sources */,
 				835E9E4B2AFCCB8200D5E4C5 /* CustomHeaderView.swift in Sources */,
+				834960C12B011B6500A78244 /* WeatherService.swift in Sources */,
 				834960802AFD42E300A78244 /* CustomFooterView.swift in Sources */,
 				838AA6832ADB93AF00CC766B /* AppDelegate.swift in Sources */,
 				835E9E492AFBEE0300D5E4C5 /* HourCollectionViewCell.swift in Sources */,
+				834960C32B011D2A00A78244 /* OpenWeatherData.swift in Sources */,
 				834960872AFD4BBC00A78244 /* SecondCustomFooterView.swift in Sources */,
 				8394799D2AF4A97800DE7A90 /* DayWeatherCollectionViewCell.swift in Sources */,
 				838AA6852ADB93AF00CC766B /* SceneDelegate.swift in Sources */,
@@ -300,6 +310,7 @@
 /* Begin XCBuildConfiguration section */
 		838AA6912ADB93B100CC766B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 834960C42B011DDD00A78244 /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -414,6 +425,7 @@
 		};
 		838AA6942ADB93B100CC766B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 834960C42B011DDD00A78244 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -8,12 +8,14 @@ import UIKit
 
 struct WeatherListData {
     let location: String
+    let time : String
     let weather: String
     let temperature: String
     let maxmin: String
     
-    init(location: String, weather: String, temperature: String, maxmin: String) {
+    init(location: String, time: String, weather: String, temperature: String, maxmin: String) {
         self.location = location
+        self.time = time
         self.weather = weather
         self.temperature = temperature
         self.maxmin = maxmin
@@ -21,8 +23,8 @@ struct WeatherListData {
 }
 
 
-var weatherList : [WeatherListData] = [.init(location: "의정부시", weather: "흐림", temperature: "21º", maxmin: "최고:29º 최저:24º"),
-                                       .init(location: "송파구", weather: "흐림", temperature: "22º", maxmin: "최고:28º 최저:23º"),
-                                       .init(location: "광진구", weather: "맑음", temperature: "23º", maxmin: "최고:29º 최저:23º"),
-                                       .init(location: "동대문구", weather: "비", temperature: "19º", maxmin: "최고:25º 최저:29º"),
-                                       .init(location: "마포구", weather: "맑음", temperature: "23º", maxmin: "최고:29º 최저:23º")]
+var weatherList : [WeatherListData] = [.init(location: "의정부시", time:"05:20", weather: "흐림", temperature: "21º", maxmin: "최고:29º 최저:24º"),
+                                       .init(location: "송파구", time:"05:20", weather: "흐림", temperature: "22º", maxmin: "최고:28º 최저:23º"),
+                                       .init(location: "광진구", time:"05:20", weather: "맑음", temperature: "23º", maxmin: "최고:29º 최저:23º"),
+                                       .init(location: "동대문구", time:"05:20", weather: "비", temperature: "19º", maxmin: "최고:25º 최저:29º"),
+                                       .init(location: "마포구", time:"05:20", weather: "맑음", temperature: "23º", maxmin: "최고:29º 최저:23º")]

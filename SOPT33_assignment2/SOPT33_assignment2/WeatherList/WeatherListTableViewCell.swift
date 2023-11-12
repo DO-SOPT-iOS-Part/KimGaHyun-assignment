@@ -26,12 +26,12 @@ class WeatherListTableViewCell: UITableViewCell {
     
     private let mainLabel = UILabel().then {
         $0.font = .bold(size: 23)
-        $0.text = "나의 위치"
+       // $0.text = "나의 위치"
         $0.textColor = .white
     }
     
-    //의정부시
-    private let locationLabel = UILabel().then {
+    
+    private let timeLabel = UILabel().then {
         $0.font = .medium(size: 17)
         $0.textColor = .white
     }
@@ -80,7 +80,7 @@ class WeatherListTableViewCell: UITableViewCell {
             $0.leading.trailing.equalToSuperview().inset(20)
         }
         
-        [mainLabel, locationLabel, weatherLabel, temperatureLabel, maxminLabel].forEach {
+        [mainLabel, timeLabel, weatherLabel, temperatureLabel, maxminLabel].forEach {
             self.backgroundImage.addSubview($0)
         }
 
@@ -89,7 +89,7 @@ class WeatherListTableViewCell: UITableViewCell {
             $0.leading.equalToSuperview().inset(13)
         }
         
-        locationLabel.snp.makeConstraints {
+        timeLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(40)
             $0.leading.equalToSuperview().inset(13)
         }
@@ -113,7 +113,8 @@ class WeatherListTableViewCell: UITableViewCell {
     }
     
     func bindData(data: WeatherListData) {
-        self.locationLabel.text = data.location
+        self.mainLabel.text = data.location
+        self.timeLabel.text = data.time
         self.weatherLabel.text = data.weather
         self.temperatureLabel.text = data.temperature
         self.maxminLabel.text = data.maxmin

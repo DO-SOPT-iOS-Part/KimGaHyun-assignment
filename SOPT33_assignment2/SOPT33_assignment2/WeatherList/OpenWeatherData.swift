@@ -18,7 +18,7 @@ struct OpenWeatherData: Codable {
     let wind: Wind
     let clouds: Clouds
     let dt: Int
-    let sys: Sys
+    let sys: Sys?
     let timezone, id: Int
     let name: String
     let cod: Int
@@ -50,7 +50,8 @@ struct Main: Codable {
 
 // MARK: - Sys
 struct Sys: Codable {
-    let type, id: Int
+    let type : Int?
+    let id: Int?
     let country: String
     let sunrise, sunset: Int
 }

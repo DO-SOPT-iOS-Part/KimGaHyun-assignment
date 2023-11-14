@@ -10,9 +10,8 @@ class WeatherService {
     
     static let shared = WeatherService()
     private init() {}
-    
-    //guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String else { return }
-    private let apiKey = "c7c81491f7fd0225920b6378a5dd0d82"
+
+   // private let apiKey = "c7c81491f7fd0225920b6378a5dd0d82"
 
     
     //request
@@ -27,7 +26,7 @@ class WeatherService {
         return request
     }
     
-    func getWeatherData(cityname: String) async throws -> OpenWeatherData? {
+    func getWeatherData(cityname: String) async throws -> OpenWeatherData {
         do {
             let request = self.makeRequest(cityname: cityname)
             let (data, response) = try await URLSession.shared.data(for: request)
@@ -36,7 +35,11 @@ class WeatherService {
                 throw NetworkError.responseError
             }
             dump(response)
-            return parseUserInfoData(data: data)
+            guard let parseData = parseUserInfoData(data: data)
+            else {
+                throw NetworkError.responseDecodingError
+            }
+            return parseData
         } catch {
             throw error
         }

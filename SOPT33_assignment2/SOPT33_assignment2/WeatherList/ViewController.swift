@@ -10,6 +10,7 @@ import SnapKit
 
 class ViewController: UIViewController, UISearchControllerDelegate {
 
+
     private var searchBar : UISearchBar = {
         let searchbar = UISearchBar()
         searchbar.placeholder = "도시 또는 공항 검색"
@@ -40,15 +41,23 @@ class ViewController: UIViewController, UISearchControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        //api key test
         guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String else { return }
         print(apiKey)
 
+        Task {
+            await fetchWeatherInfo()
+        }
+        
+        
         mainLayout()
         setSearchBarLayout()
             
         setLayout()
         setTableViewConfig()
     }
+    
+    
     
     
     @objc func buttonPressed() {
@@ -60,7 +69,6 @@ class ViewController: UIViewController, UISearchControllerDelegate {
     func mainLayout() {
         [etcButton, mainTitle].forEach {
             view.addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
         }
         view.addSubview(etcButton)
         view.addSubview(mainTitle)
@@ -109,6 +117,39 @@ class ViewController: UIViewController, UISearchControllerDelegate {
         $0.separatorColor = .lightGray
         $0.separatorStyle = .singleLine
     }
+
+    //API에서 가져오는 timezone 현재 시간으로 변경하기
+    func convertTime(timezone: Int) -> String {
+        let timeZone = TimeZone(secondsFromGMT: timezone)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.timeZone = timeZone
+        let currentDate = Date()
+        var formattedTime = dateFormatter.string(from: currentDate)
+        return formattedTime
+    }
+    
+    private func fetchWeatherInfo() async {
+            let cityname = ["seoul", "daegu", "ulsan", "chuncheon", "jeju", "gwangju", "suwon", "iksan", "busan"]
+            
+            for city in cityname {
+//                print("❤️❤️", city)
+                do {
+                    let currentWeather = try await WeatherService.shared.getWeatherData(cityname: city)
+                    print("type:", type(of: currentWeather.timezone))
+                    let weatherInfo = WeatherListData(location: currentWeather.name,
+                                                      time: convertTime(timezone: currentWeather.timezone),
+                                                      weather: currentWeather.weather[0].main,
+                                                      temperature: Int(currentWeather.main.temp),
+                                                      max: Int(currentWeather.main.tempMax),
+                                                      min: Int(currentWeather.main.tempMin))
+                    weatherList.append(weatherInfo)
+                } catch {
+                    print(error)
+                }
+            }
+            tableView.reloadData()
+        }
 }
 
 

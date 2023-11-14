@@ -205,6 +205,7 @@ extension ResultViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             guard let item = collectionView.dequeueReusableCell(withReuseIdentifier:  TopCollectionViewCell.identifier,for: indexPath) as? TopCollectionViewCell else {return UICollectionViewCell()}
+            item.bindData(data: weatherList[indexPath.row])
             return item
         }
         else if indexPath.section == 1 {

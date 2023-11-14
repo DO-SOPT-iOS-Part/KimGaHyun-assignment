@@ -4,6 +4,11 @@
 //
 //  Created by Gahyun Kim on 2023/11/06.
 //
+//        setFont(label: locationLabel, fonttype: "SFProDisplay-Regular", size: 35, text: "의정부시")
+//        setFont(label: tempLabel, fonttype: "SFProDisplay-Thin", size: 90, text: "21º")
+//        setFont(label: weatherLabel, fonttype: "SFProDisplay-Regular", size: 25, text: "흐림")
+//        setFont(label: maxminLabel, fonttype: "SFProDisplay-Regular", size: 20, text: "최고:29º 최저:25º")
+//
 
 import UIKit
 
@@ -11,10 +16,20 @@ class TopCollectionViewCell: UICollectionViewCell {
     
     static let identifier: String = "TopCollectionViewCell"
     
-    private var locationLabel = UILabel()
-    private var tempLabel = UILabel()
-    private var weatherLabel = UILabel()
-    private var maxminLabel = UILabel()
+    private var locationLabel = UILabel().then {
+        $0.font = .regular(size: 35)
+    }
+    
+    private var tempLabel = UILabel().then {
+        $0.font = .thin(size: 90)
+    }
+    
+    private var weatherLabel = UILabel().then {
+        $0.font = .regular(size: 25)
+    }
+    private var maxminLabel = UILabel().then {
+        $0.font = .regular(size: 20)
+    }
     
     
     override init(frame: CGRect) {
@@ -42,14 +57,7 @@ class TopCollectionViewCell: UICollectionViewCell {
                 $0.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             ])
         }
-        
-        setFont(label: locationLabel, fonttype: "SFProDisplay-Regular", size: 35, text: "의정부시")
-        setFont(label: tempLabel, fonttype: "SFProDisplay-Thin", size: 90, text: "21º")
-        setFont(label: weatherLabel, fonttype: "SFProDisplay-Regular", size: 25, text: "흐림")
-        setFont(label: maxminLabel, fonttype: "SFProDisplay-Regular", size: 20, text: "최고:29º 최저:25º")
-        
 
-        
         locationLabel.snp.makeConstraints {
             $0.top.equalTo(contentView.snp.top)
         }
@@ -68,6 +76,13 @@ class TopCollectionViewCell: UICollectionViewCell {
     func setFont(label: UILabel, fonttype: String, size: CGFloat, text: String){
         label.font = UIFont(name: fonttype, size: size)
         label.text = text
+    }
+    
+    func bindData(data: WeatherListData) {
+        self.locationLabel.text = data.location
+        self.tempLabel.text = String(data.temperature) + "º"
+        self.weatherLabel.text = data.weather
+        self.maxminLabel.text = "최고:" + String(data.max) + "º " + " 최저:" + String(data.min) + "º"
     }
     
 }

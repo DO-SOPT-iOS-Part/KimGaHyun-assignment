@@ -19,7 +19,6 @@ class WeatherListTableViewCell: UITableViewCell {
 
     private let tableView = UITableView(frame: .zero, style: .plain).then {
         $0.backgroundColor = .clear
-        //$0.separatorColor = .lightGray
         $0.separatorStyle = .singleLine
     }
 
@@ -45,10 +44,16 @@ class WeatherListTableViewCell: UITableViewCell {
         $0.textColor = .white
     }
     
-    private let maxminLabel = UILabel().then {
+    private let maxLabel = UILabel().then {
         $0.font = .medium(size: 16)
         $0.textColor = .white
     }
+    
+    private let minLabel = UILabel().then {
+        $0.font = .medium(size: 16)
+        $0.textColor = .white
+    }
+    
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -79,7 +84,7 @@ class WeatherListTableViewCell: UITableViewCell {
             $0.leading.trailing.equalToSuperview().inset(20)
         }
         
-        [mainLabel, timeLabel, weatherLabel, temperatureLabel, maxminLabel].forEach {
+        [mainLabel, timeLabel, weatherLabel, temperatureLabel, maxLabel, minLabel].forEach {
             self.backgroundImage.addSubview($0)
         }
 
@@ -103,9 +108,13 @@ class WeatherListTableViewCell: UITableViewCell {
             $0.trailing.equalToSuperview().inset(15)
         }
         
-        maxminLabel.snp.makeConstraints {
+        maxLabel.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(12)
-            $0.trailing.equalToSuperview().inset(15)
+            $0.trailing.equalToSuperview().inset(60)
+        }
+        minLabel.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(12)
+            $0.leading.equalTo(maxLabel.snp.leading).offset(60)
         }
     
         
@@ -114,9 +123,13 @@ class WeatherListTableViewCell: UITableViewCell {
     func bindData(data: WeatherListData) {
         self.mainLabel.text = data.location
         self.timeLabel.text = data.time
+ 
+
         self.weatherLabel.text = data.weather
-        self.temperatureLabel.text = data.temperature
-        self.maxminLabel.text = data.maxmin
+        self.temperatureLabel.text = String(data.temperature) + "º"
+        self.maxLabel.text = "최고:" + String(data.max) + "º"
+        self.minLabel.text = "최저:" + String(data.min) + "º"
     }
+    
 
 }

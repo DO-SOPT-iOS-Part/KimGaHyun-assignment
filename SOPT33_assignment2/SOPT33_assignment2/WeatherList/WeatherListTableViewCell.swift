@@ -10,6 +10,7 @@ import Then
 import SnapKit
 
 class WeatherListTableViewCell: UITableViewCell {
+    
     static let identifier : String = "WeatherListTableViewCell"
     
     private let backgroundImage = UIImageView().then {
@@ -53,7 +54,6 @@ class WeatherListTableViewCell: UITableViewCell {
         $0.font = .medium(size: 16)
         $0.textColor = .white
     }
-    
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -110,26 +110,20 @@ class WeatherListTableViewCell: UITableViewCell {
         
         maxLabel.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(12)
-            $0.trailing.equalToSuperview().inset(60)
+            $0.trailing.equalToSuperview().inset(65)
         }
         minLabel.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(12)
-            $0.leading.equalTo(maxLabel.snp.leading).offset(60)
+            $0.leading.equalTo(maxLabel.snp.leading).offset(55)
         }
-    
-        
     }
     
     func bindData(data: WeatherListData) {
         self.mainLabel.text = data.location
         self.timeLabel.text = data.time
- 
-
         self.weatherLabel.text = data.weather
         self.temperatureLabel.text = String(data.temperature) + "º"
         self.maxLabel.text = "최고:" + String(data.max) + "º"
         self.minLabel.text = "최저:" + String(data.min) + "º"
     }
-    
-
 }

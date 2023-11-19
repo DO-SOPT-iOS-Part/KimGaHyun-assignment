@@ -10,6 +10,7 @@ import Then
 import SnapKit
 
 class WeatherListTableViewCell: UITableViewCell {
+    
     static let identifier : String = "WeatherListTableViewCell"
     
     private let backgroundImage = UIImageView().then {
@@ -19,19 +20,17 @@ class WeatherListTableViewCell: UITableViewCell {
 
     private let tableView = UITableView(frame: .zero, style: .plain).then {
         $0.backgroundColor = .clear
-        //$0.separatorColor = .lightGray
         $0.separatorStyle = .singleLine
     }
 
     
     private let mainLabel = UILabel().then {
         $0.font = .bold(size: 23)
-        $0.text = "나의 위치"
         $0.textColor = .white
     }
     
-    //의정부시
-    private let locationLabel = UILabel().then {
+    
+    private let timeLabel = UILabel().then {
         $0.font = .medium(size: 17)
         $0.textColor = .white
     }
@@ -46,7 +45,12 @@ class WeatherListTableViewCell: UITableViewCell {
         $0.textColor = .white
     }
     
-    private let maxminLabel = UILabel().then {
+    private let maxLabel = UILabel().then {
+        $0.font = .medium(size: 16)
+        $0.textColor = .white
+    }
+    
+    private let minLabel = UILabel().then {
         $0.font = .medium(size: 16)
         $0.textColor = .white
     }
@@ -80,7 +84,7 @@ class WeatherListTableViewCell: UITableViewCell {
             $0.leading.trailing.equalToSuperview().inset(20)
         }
         
-        [mainLabel, locationLabel, weatherLabel, temperatureLabel, maxminLabel].forEach {
+        [mainLabel, timeLabel, weatherLabel, temperatureLabel, maxLabel, minLabel].forEach {
             self.backgroundImage.addSubview($0)
         }
 
@@ -89,7 +93,7 @@ class WeatherListTableViewCell: UITableViewCell {
             $0.leading.equalToSuperview().inset(13)
         }
         
-        locationLabel.snp.makeConstraints {
+        timeLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(40)
             $0.leading.equalToSuperview().inset(13)
         }
@@ -104,19 +108,22 @@ class WeatherListTableViewCell: UITableViewCell {
             $0.trailing.equalToSuperview().inset(15)
         }
         
-        maxminLabel.snp.makeConstraints {
+        maxLabel.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(12)
-            $0.trailing.equalToSuperview().inset(15)
+            $0.trailing.equalToSuperview().inset(65)
         }
-    
-        
+        minLabel.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(12)
+            $0.leading.equalTo(maxLabel.snp.leading).offset(55)
+        }
     }
     
     func bindData(data: WeatherListData) {
-        self.locationLabel.text = data.location
+        self.mainLabel.text = data.location
+        self.timeLabel.text = data.time
         self.weatherLabel.text = data.weather
-        self.temperatureLabel.text = data.temperature
-        self.maxminLabel.text = data.maxmin
+        self.temperatureLabel.text = String(data.temperature) + "º"
+        self.maxLabel.text = "최고:" + String(data.max) + "º"
+        self.minLabel.text = "최저:" + String(data.min) + "º"
     }
-
 }

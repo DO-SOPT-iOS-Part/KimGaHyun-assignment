@@ -7,9 +7,7 @@
 
 import Foundation
 
-
-import UIKit
-
+// 요일 별 날씨 정보 Data
 struct DayWeatherListData {
     let day: String
     let weatherimg : String

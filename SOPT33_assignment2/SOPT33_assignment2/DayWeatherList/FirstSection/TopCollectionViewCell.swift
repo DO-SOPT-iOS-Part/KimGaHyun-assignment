@@ -3,18 +3,15 @@
 //  SOPT33_assignment2
 //
 //  Created by Gahyun Kim on 2023/11/06.
-//
-//        setFont(label: locationLabel, fonttype: "SFProDisplay-Regular", size: 35, text: "의정부시")
-//        setFont(label: tempLabel, fonttype: "SFProDisplay-Thin", size: 90, text: "21º")
-//        setFont(label: weatherLabel, fonttype: "SFProDisplay-Regular", size: 25, text: "흐림")
-//        setFont(label: maxminLabel, fonttype: "SFProDisplay-Regular", size: 20, text: "최고:29º 최저:25º")
-//
+
 
 import UIKit
 
+import Then
+import SnapKit
+
 class TopCollectionViewCell: UICollectionViewCell {
     
-    static let identifier: String = "TopCollectionViewCell"
     
     private var locationLabel = UILabel().then {
         $0.font = .regular(size: 35)

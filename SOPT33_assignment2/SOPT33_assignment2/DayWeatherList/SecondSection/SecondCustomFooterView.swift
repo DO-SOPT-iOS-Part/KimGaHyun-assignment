@@ -7,10 +7,9 @@
 
 import UIKit
 
-//2번째 section의 footerView
+// 2번째 section(시간 별  날씨)의 footerView
 class SecondCustomFooterView: UICollectionReusableView {
 
-    static let identifier: String = "SecondCustomFooterView"
     
     func configure() {
         backgroundColor = .clear

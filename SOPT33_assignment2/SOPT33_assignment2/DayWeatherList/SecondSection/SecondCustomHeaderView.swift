@@ -7,11 +7,9 @@
 
 import UIKit
 
-//2번째 section의 headerView
+// 2번째 section(시간 별  날씨)의 headerView
 class SecondCustomHeaderView: UICollectionReusableView {
 
-    static let identifier: String = "SecondCustomHeaderView"
-    
     //header로 뺄 거
     private var descriptLabel : UILabel = {
         let label = UILabel()

@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Then
+import SnapKit
 
-//3번째 section의 headerView
+// 3번째 section(요일 별 날씨)의 headerView
 class CustomHeaderView: UICollectionReusableView {
 
-    static let identifier: String = "CustomHeaderView"
+
     let midLabel : UILabel = {
         let label = UILabel()
 //        label.text = "비하와 비난과 질타를 멈춰주세요 "
@@ -19,7 +21,6 @@ class CustomHeaderView: UICollectionReusableView {
         label.font = .regular(size: 15)
         return label
     }()
-    
     
     func configure() {
         backgroundColor = .clear

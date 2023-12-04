@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import Then
+import SnapKit
 
+//요일 별 날씨
 class DayWeatherCollectionViewCell: UICollectionViewCell {
    
-    static let identifier: String = "DayWeatherCollectionViewCell"
+
     private let dayLabel = UILabel().then {
         $0.font = .regular(size: 20)
         $0.textColor = .white

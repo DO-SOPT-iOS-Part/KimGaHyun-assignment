@@ -10,22 +10,13 @@ import SnapKit
 
 class ViewController: UIViewController, UISearchControllerDelegate {
     
-    var searchWeatherListData = weatherList
+    var searchWeatherListData = weatherList //검색 결과 데이터
     private lazy var etcButton : UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "menu"), for: .normal)
         return button
     }()
 
-
-    private var isFiltering : Bool {
-        let searchController = self.navigationItem.searchController
-        let isActive = searchController?.isActive ?? false
-        let isSearchBarHasText = searchController?.searchBar.text?.isEmpty == false
-        
-        return isActive && isSearchBarHasText
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
@@ -54,9 +45,9 @@ class ViewController: UIViewController, UISearchControllerDelegate {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.placeholder = "도시 또는 공항 검색"
         searchController.hidesNavigationBarDuringPresentation = false
-            
-        self.navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
         
+        self.navigationItem.searchController = searchController
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = "날씨"
         self.navigationItem.hidesSearchBarWhenScrolling = false
@@ -82,7 +73,7 @@ class ViewController: UIViewController, UISearchControllerDelegate {
     
     private func setTableViewConfig() {
         self.tableView.register(WeatherListTableViewCell.self,
-                                forCellReuseIdentifier: WeatherListTableViewCell.identifier)
+                                forCellReuseIdentifier: WeatherListTableViewCell.className)
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
@@ -119,7 +110,6 @@ class ViewController: UIViewController, UISearchControllerDelegate {
                                                       min: Int(currentWeather.main.tempMin))
                     weatherList.append(weatherInfo)
                     searchWeatherListData = weatherList
-                    
                 } catch {
                     print(error)
                 }
@@ -132,18 +122,17 @@ class ViewController: UIViewController, UISearchControllerDelegate {
 extension ViewController: UITableViewDelegate {}
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return weatherList.count
         return searchWeatherListData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: WeatherListTableViewCell.identifier,
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: WeatherListTableViewCell.className,
             for: indexPath) as? WeatherListTableViewCell else {return UITableViewCell()}
         
         cell.bindData(data: searchWeatherListData[indexPath.row])
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             tableView.deselectRow(at: indexPath, animated: true)
             print("Click Cell Number:" + String(indexPath.row))
@@ -151,16 +140,17 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-////검색 기능
-////searchWeatherListData -> searchbar에 text가 있을 경우, 없을 경우 나누기 위해 기존의 weatherList 대입
-//extension ViewController: UISearchResultsUpdating {
-//    func updateSearchResults(for searchController: UISearchController) {
-//        guard let text = searchController.searchBar.text else { return }
-//        if text.isEmpty {
-//            searchWeatherListData = weatherList
-//        } else {
-//            searchWeatherListData = weatherList.filter { $0.location.lowercased().contains(text.lowercased()) }
-//        }
-//        tableView.reloadData()
-//    }
-//}
+//검색 기능
+//searchWeatherListData -> searchbar에 text가 있을 경우, 없을 경우 나누기 위해 기존의 weatherList 대입
+extension ViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        if text.isEmpty {
+            searchWeatherListData = weatherList
+            print("🍎🍎🍎",searchWeatherListData.count)
+        } else {
+            searchWeatherListData = weatherList.filter { $0.location.lowercased().contains(text.lowercased()) }
+        }
+    tableView.reloadData()
+    }
+}

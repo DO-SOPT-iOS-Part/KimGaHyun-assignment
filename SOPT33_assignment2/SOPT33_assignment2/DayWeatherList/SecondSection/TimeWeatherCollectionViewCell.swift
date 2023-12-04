@@ -6,12 +6,13 @@
 //
 
 import UIKit
-import SnapKit
 
+import SnapKit
+import Then
+
+// MARK: - 시간 별 날씨
 final class TimeWeatherCollectionViewCell: UICollectionViewCell {
-    
-    static let identifier: String = "TimeWeatherCollectionViewCell"
-    
+        
     private var timeLabel : UILabel = {
         let label = UILabel()
         label.font = .medium(size: 17)
@@ -50,7 +51,7 @@ final class TimeWeatherCollectionViewCell: UICollectionViewCell {
         self.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2).cgColor
         self.layer.borderWidth = 0.5
         
-        self.detailCollecitonView.register(HourCollectionViewCell.self, forCellWithReuseIdentifier: HourCollectionViewCell.identifier)
+        self.detailCollecitonView.register(HourCollectionViewCell.self, forCellWithReuseIdentifier: HourCollectionViewCell.className)
   
         self.detailCollecitonView.backgroundColor = .clear
         self.detailCollecitonView.delegate = self
@@ -78,6 +79,7 @@ final class TimeWeatherCollectionViewCell: UICollectionViewCell {
     }
 }
 
+// CollectionViewCell 크기 설정
 extension TimeWeatherCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 55, height: 120)
@@ -88,11 +90,11 @@ extension TimeWeatherCollectionViewCell: UICollectionViewDelegateFlowLayout {
 extension TimeWeatherCollectionViewCell: UICollectionViewDelegate {}
 extension TimeWeatherCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return TimeweatherList.count
+        return TimeweatherList.count    //Data의 갯수 == Horizontal CollectionView Cell 갯수
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: HourCollectionViewCell.identifier,for: indexPath) as? HourCollectionViewCell else {return UICollectionViewCell()}
+        guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: HourCollectionViewCell.className,for: indexPath) as? HourCollectionViewCell else {return UICollectionViewCell()}
         item.bindData(data: TimeweatherList[indexPath.row])
         return item
     }

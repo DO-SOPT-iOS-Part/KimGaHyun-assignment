@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import Then
+import SnapKit
 
+// 시간 별  날씨 - Horizontal CollectionView Cell
 class HourCollectionViewCell: UICollectionViewCell {
-    
-    static let identifier: String = "HourCollectionViewCell"
     
     private var timeLabel : UILabel = {
         let label = UILabel()

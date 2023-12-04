@@ -7,8 +7,7 @@
 
 import Foundation
 
-import UIKit
-
+// 시간 별  날씨 정보 Data - Horizontal CollectionView Cell
 struct TimeWeatherListData {
     let time : String
     let weatherImage : String

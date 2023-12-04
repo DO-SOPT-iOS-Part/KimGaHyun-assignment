@@ -5,7 +5,6 @@
 //  Created by Gahyun Kim on 2023/11/12.
 //
 
-import Foundation
 import UIKit
 
 // MARK: - CurrentWeatherDataModel

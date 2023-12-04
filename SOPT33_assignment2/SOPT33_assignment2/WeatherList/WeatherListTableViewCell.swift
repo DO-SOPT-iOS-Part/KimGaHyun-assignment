@@ -6,13 +6,12 @@
 //
 
 import UIKit
+
 import Then
 import SnapKit
 
 class WeatherListTableViewCell: UITableViewCell {
-    
-    static let identifier : String = "WeatherListTableViewCell"
-    
+        
     private let backgroundImage = UIImageView().then {
         $0.image = UIImage(named: "list")
     }

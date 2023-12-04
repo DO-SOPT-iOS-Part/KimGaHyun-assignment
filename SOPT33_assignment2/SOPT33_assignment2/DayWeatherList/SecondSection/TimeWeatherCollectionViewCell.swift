@@ -11,26 +11,14 @@ import SnapKit
 import Then
 
 // MARK: - 시간 별 날씨
-final class TimeWeatherCollectionViewCell: UICollectionViewCell {
-        
-    private var timeLabel : UILabel = {
-        let label = UILabel()
-        label.font = .medium(size: 17)
-        label.textColor = .white
-        label.textAlignment = .center
-        return label
-    }()
 
+final class TimeWeatherCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - set Properties
+    
+    private var timeLabel = UILabel()
     private var weatherImage = UIImageView()
-    private var tempLabel : UILabel = {
-        let label = UILabel()
-        label.font = .medium(size: 20)
-        label.textColor = .white
-        label.textAlignment = .center
-        return label
-    }()
-    
+    private var tempLabel = UILabel()
 
     private let detailCollecitonView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -44,33 +32,79 @@ final class TimeWeatherCollectionViewCell: UICollectionViewCell {
     }()
     
     
+    // MARK: - Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-        self.layer.cornerRadius = 20
-        self.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2).cgColor
-        self.layer.borderWidth = 0.5
         
-        self.detailCollecitonView.register(HourCollectionViewCell.self, forCellWithReuseIdentifier: HourCollectionViewCell.className)
-  
-        self.detailCollecitonView.backgroundColor = .clear
-        self.detailCollecitonView.delegate = self
-        self.detailCollecitonView.dataSource = self
-        self.setcollectionLayout()
+        setUI()
+        setHierachy()
+        setLayout()
+        
+        setDelegate()
+        setupCollectionView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setcollectionLayout() {
-        self.contentView.addSubview(detailCollecitonView)
+    
+    // MARK: - set UI
+    
+    private func setUI() {
+        detailCollecitonView.backgroundColor = .clear
+        
+        timeLabel.do {
+            $0.font = .medium(size: 17)
+            $0.textColor = .white
+            $0.textAlignment = .center
+        }
+        
+        tempLabel.do {
+            $0.font = .medium(size: 20)
+            $0.textColor = .white
+            $0.textAlignment = .center
+        }
+        
+        self.layer.cornerRadius = 20
+        self.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2).cgColor
+        self.layer.borderWidth = 0.5
+    }
+    
+    
+    // MARK: - set Hierachy
+    
+    private func setHierachy() {
+        contentView.addSubview(detailCollecitonView)
+    }
+    
+    
+    // MARK: - set Layout
+    
+    private func setLayout() {
         detailCollecitonView.snp.makeConstraints {
             $0.top.trailing.equalToSuperview()
             $0.leading.equalToSuperview().inset(15)
             $0.bottom.equalToSuperview()
         }
     }
+    
+    
+    // MARK: - set Delegate
+    
+    private func setDelegate() {
+        self.detailCollecitonView.delegate = self
+        self.detailCollecitonView.dataSource = self
+    }
+    
+    
+    // MARK: - set CollectionView
+    
+    private func setupCollectionView() {
+        self.detailCollecitonView.register(HourCollectionViewCell.self, forCellWithReuseIdentifier: HourCollectionViewCell.className)
+    }
+    
     
     func bindData(data: TimeWeatherListData) {
         self.timeLabel.text = data.time

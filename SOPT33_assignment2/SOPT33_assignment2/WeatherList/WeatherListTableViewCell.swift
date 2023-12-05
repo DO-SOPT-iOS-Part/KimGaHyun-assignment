@@ -83,10 +83,13 @@ final class WeatherListTableViewCell: UITableViewCell {
     
     private func setHierachy() {
         contentView.addSubview(backgroundImage)
-    
-        [mainLabel, timeLabel, weatherLabel, temperatureLabel, maxLabel, minLabel].forEach {
-            self.backgroundImage.addSubview($0)
-        }
+
+        backgroundImage.addSubviews(mainLabel,
+                                    timeLabel,
+                                    weatherLabel,
+                                    temperatureLabel,
+                                    maxLabel,
+                                    minLabel)
     }
     
     

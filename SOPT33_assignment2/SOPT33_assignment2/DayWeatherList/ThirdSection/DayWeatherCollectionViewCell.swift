@@ -94,13 +94,16 @@ final class DayWeatherCollectionViewCell: UICollectionViewCell {
     // MARK: - set Hierachy
     
     private func setHierachy() {
-        [weatherImage, percent].forEach {
-            weatherStack.addArrangedSubview($0)
-        }
+        weatherStack.addArrangedSubviews(weatherImage,
+                                         percent)
+
         
-        [dayLabel, weatherStack, mintemperatureLabel, tempbarImage, maxtemperatureLabel, divideView].forEach {
-            self.contentView.addSubview($0)
-        }
+        contentView.addSubviews(dayLabel,
+                                weatherStack,
+                                mintemperatureLabel,
+                                tempbarImage,
+                                maxtemperatureLabel,
+                                divideView)
     }
     
     

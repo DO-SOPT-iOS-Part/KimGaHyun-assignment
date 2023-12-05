@@ -24,7 +24,6 @@ final class TopCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setUI()
         setHierachy()
         setLayout()
@@ -65,9 +64,10 @@ final class TopCollectionViewCell: UICollectionViewCell {
     // MARK: - set Hierachy
     
     private func setHierachy() {
-        [locationLabel, tempLabel, weatherLabel, maxminLabel].forEach {
-            contentView.addSubview($0)
-        }
+        contentView.addSubviews(locationLabel,
+                                tempLabel,
+                                weatherLabel,
+                                maxminLabel)
     }
     
     

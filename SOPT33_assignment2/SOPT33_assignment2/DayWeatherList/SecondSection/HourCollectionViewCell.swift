@@ -50,9 +50,10 @@ final class HourCollectionViewCell: UICollectionViewCell {
     // MARK: - set Hierachy
     
     private func setHierachy() {
-        [timeLabel, weatherImage, tempLabel].forEach {
-            contentView.addSubview($0)
-        }
+        
+        contentView.addSubviews(timeLabel,
+                                weatherImage,
+                                tempLabel)
     }
     
     

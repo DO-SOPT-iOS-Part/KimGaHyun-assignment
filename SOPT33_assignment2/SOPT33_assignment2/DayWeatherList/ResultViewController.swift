@@ -5,10 +5,13 @@
 //  Created by Gahyun Kim on 2023/10/16.
 //
 import UIKit
+
 import SnapKit
 import Then
 
 final class ResultViewController: UIViewController {
+    
+    // MARK: - set Properties
     
     private var contentView = UIImageView()
     private var backgroundView =  UIImageView()
@@ -29,6 +32,9 @@ final class ResultViewController: UIViewController {
         return collectionView
     }()
     
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +54,9 @@ final class ResultViewController: UIViewController {
         print("BUTTON PRESSED")
         navigationController?.popViewController(animated: true)
     }
+    
+    
+    // MARK: - set UI
     
     private func setUI() {
         contentView.backgroundColor = .clear
@@ -87,19 +96,26 @@ final class ResultViewController: UIViewController {
         }
     }
     
+    
+    // MARK: - set Hierachy
+    
     private func setHierachy() {
-        view.addSubview(backgroundView)
-        view.addSubview(contentView)
-        view.addSubview(detailCollecitonView)
+        view.addSubviews(backgroundView,
+                         contentView,
+                         detailCollecitonView,
+                         bottomdivideView,
+                         bottomStackView)
         
-        view.addSubview(bottomdivideView)
-        view.addSubview(bottomStackView)
-        bottomStackView.addArrangeSubViews(currentImage, dotImage)
-        view.addSubview(mapImage)
-        view.addSubview(menuButton)
+        bottomStackView.addArrangedSubviews(currentImage,
+                                            dotImage)
+        
+        view.addSubviews(mapImage,
+                         menuButton)
     }
     
 
+    // MARK: - set Layout
+    
     private func setLayout() {
         backgroundView.snp.makeConstraints {
             $0.centerX.centerY.width.height.equalToSuperview()
@@ -136,35 +152,43 @@ final class ResultViewController: UIViewController {
         }
     }
     
+    
+    // MARK: - set Delegate
+    
     private func setDelegate() {
         self.detailCollecitonView.delegate = self
         self.detailCollecitonView.dataSource = self
     }
     
-    private func setupCollectionView() {
     
-        self.detailCollecitonView.register(TopCollectionViewCell.self, forCellWithReuseIdentifier: TopCollectionViewCell.className)
-        self.detailCollecitonView.register(TimeWeatherCollectionViewCell.self, forCellWithReuseIdentifier: TimeWeatherCollectionViewCell.className)
-        self.detailCollecitonView.register(DayWeatherCollectionViewCell.self, forCellWithReuseIdentifier: DayWeatherCollectionViewCell.className)
+    // MARK: - set CollectionView
+    
+    private func setupCollectionView() {
+        self.detailCollecitonView.register(TopCollectionViewCell.self,
+                                           forCellWithReuseIdentifier: TopCollectionViewCell.className)
+        self.detailCollecitonView.register(TimeWeatherCollectionViewCell.self,
+                                           forCellWithReuseIdentifier: TimeWeatherCollectionViewCell.className)
+        self.detailCollecitonView.register(DayWeatherCollectionViewCell.self,
+                                           forCellWithReuseIdentifier: DayWeatherCollectionViewCell.className)
         
 
         //Header, Footer
-        self.detailCollecitonView.register(SecondCustomHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SecondCustomHeaderView.className)  //2번째 section
-        self.detailCollecitonView.register(SecondCustomFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SecondCustomFooterView.className) //2번째 section
+        self.detailCollecitonView.register(SecondCustomHeaderView.self,
+                                           forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                           withReuseIdentifier: SecondCustomHeaderView.className)  //2번째 section
+        self.detailCollecitonView.register(SecondCustomFooterView.self,
+                                           forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+                                           withReuseIdentifier: SecondCustomFooterView.className) //2번째 section
         
-        self.detailCollecitonView.register(CustomHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CustomHeaderView.className)  //3번째 section
-        self.detailCollecitonView.register(CustomFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CustomFooterView.className) //3번째 section
-    }
-    
-    
-
-}
-
-extension UIStackView {
-    func addArrangeSubViews(_ views: UIView...) {
-        views.forEach { self.addArrangedSubview($0) }
+        self.detailCollecitonView.register(CustomHeaderView.self,
+                                           forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                           withReuseIdentifier: CustomHeaderView.className)  //3번째 section
+        self.detailCollecitonView.register(CustomFooterView.self,
+                                           forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+                                           withReuseIdentifier: CustomFooterView.className) //3번째 section
     }
 }
+
 
 extension ResultViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

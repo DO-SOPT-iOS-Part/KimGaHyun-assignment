@@ -40,6 +40,7 @@
 		83DCC7BC2AF8D715000EC679 /* TimeWeatherListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCC7BB2AF8D715000EC679 /* TimeWeatherListData.swift */; };
 		83FEC0452B1E162800D91AE4 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FEC0442B1E162800D91AE4 /* UIStackView+.swift */; };
 		83FEC0472B1E166700D91AE4 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FEC0462B1E166700D91AE4 /* NSObject+.swift */; };
+		83FEC0492B1F0F2400D91AE4 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FEC0482B1F0F2400D91AE4 /* UIView+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		83DCC7BB2AF8D715000EC679 /* TimeWeatherListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeWeatherListData.swift; sourceTree = "<group>"; };
 		83FEC0442B1E162800D91AE4 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		83FEC0462B1E166700D91AE4 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
+		83FEC0482B1F0F2400D91AE4 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 		83FEC0412B1E156400D91AE4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				83FEC0482B1F0F2400D91AE4 /* UIView+.swift */,
 				83FEC0442B1E162800D91AE4 /* UIStackView+.swift */,
 				83FEC0462B1E166700D91AE4 /* NSObject+.swift */,
 			);
@@ -335,6 +338,7 @@
 				8394799D2AF4A97800DE7A90 /* DayWeatherCollectionViewCell.swift in Sources */,
 				838AA6852ADB93AF00CC766B /* SceneDelegate.swift in Sources */,
 				83DCC7BA2AF8D549000EC679 /* TimeWeatherCollectionViewCell.swift in Sources */,
+				83FEC0492B1F0F2400D91AE4 /* UIView+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

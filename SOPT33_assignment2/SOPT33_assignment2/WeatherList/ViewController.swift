@@ -81,8 +81,7 @@ final class ViewController: UIViewController, UISearchControllerDelegate {
     // MARK: - set Hierachy
     
     private func setHierachy() {
-        view.addSubview(tableView)
-        view.addSubview(etcButton)
+        view.addSubviews(tableView, etcButton)
     }
 
 

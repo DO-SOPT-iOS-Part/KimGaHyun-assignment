@@ -3,39 +3,30 @@
 //  SOPT33_assignment2
 //
 //  Created by Gahyun Kim on 2023/11/06.
-//
-//        setFont(label: locationLabel, fonttype: "SFProDisplay-Regular", size: 35, text: "의정부시")
-//        setFont(label: tempLabel, fonttype: "SFProDisplay-Thin", size: 90, text: "21º")
-//        setFont(label: weatherLabel, fonttype: "SFProDisplay-Regular", size: 25, text: "흐림")
-//        setFont(label: maxminLabel, fonttype: "SFProDisplay-Regular", size: 20, text: "최고:29º 최저:25º")
-//
+
 
 import UIKit
 
-class TopCollectionViewCell: UICollectionViewCell {
+import Then
+import SnapKit
+
+final class TopCollectionViewCell: UICollectionViewCell {
     
-    static let identifier: String = "TopCollectionViewCell"
+    // MARK: - set Properties
     
-    private var locationLabel = UILabel().then {
-        $0.font = .regular(size: 35)
-    }
+    private var locationLabel = UILabel()
+    private var tempLabel = UILabel()
+    private var weatherLabel = UILabel()
+    private var maxminLabel = UILabel()
     
-    private var tempLabel = UILabel().then {
-        $0.font = .thin(size: 90)
-    }
     
-    private var weatherLabel = UILabel().then {
-        $0.font = .regular(size: 25)
-    }
-    private var maxminLabel = UILabel().then {
-        $0.font = .regular(size: 20)
-    }
-    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-    
-        self.setLayout()
+        setUI()
+        setHierachy()
+        setLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -43,21 +34,52 @@ class TopCollectionViewCell: UICollectionViewCell {
     }
     
     
-    private func setLayout() {
+    // MARK: - set UI
+    
+    private func setUI() {
+        locationLabel.do {
+            $0.font = .regular(size: 35)
+        }
+        
+        tempLabel.do {
+            $0.font = .thin(size: 90)
+        }
+        
+        weatherLabel.do {
+            $0.font = .regular(size: 25)
+        }
+        
+        maxminLabel.do {
+            $0.font = .regular(size: 20)
+        }
         
         [locationLabel, tempLabel, weatherLabel, maxminLabel].forEach {
-            contentView.addSubview($0)
-            
-            $0.translatesAutoresizingMaskIntoConstraints = false
             $0.textColor = .white
             $0.backgroundColor = .clear
             $0.textAlignment = .center
-            NSLayoutConstraint.activate([
-                $0.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-                $0.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            ])
         }
-
+    }
+    
+    
+    // MARK: - set Hierachy
+    
+    private func setHierachy() {
+        contentView.addSubviews(locationLabel,
+                                tempLabel,
+                                weatherLabel,
+                                maxminLabel)
+    }
+    
+    
+    // MARK: - set Layout
+        
+    private func setLayout() {
+        [locationLabel, tempLabel, weatherLabel, maxminLabel].forEach {
+            $0.snp.makeConstraints {
+                $0.leading.equalTo(contentView.snp.leading)
+                $0.trailing.equalTo(contentView.snp.trailing)
+            }
+        }
         locationLabel.snp.makeConstraints {
             $0.top.equalTo(contentView.snp.top)
         }
@@ -73,7 +95,7 @@ class TopCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func setFont(label: UILabel, fonttype: String, size: CGFloat, text: String){
+    func setFont(label: UILabel, fonttype: String, size: CGFloat, text: String) {
         label.font = UIFont(name: fonttype, size: size)
         label.text = text
     }
@@ -82,7 +104,6 @@ class TopCollectionViewCell: UICollectionViewCell {
         self.locationLabel.text = data.location
         self.tempLabel.text = String(data.temperature) + "º"
         self.weatherLabel.text = data.weather
-        self.maxminLabel.text = "최고:" + String(data.max) + "º " + " 최저:" + String(data.min) + "º"
+        self.maxminLabel.text = "최고 : " + String(data.max) + "º " + " 최저 : " + String(data.min) + "º"
     }
-    
 }

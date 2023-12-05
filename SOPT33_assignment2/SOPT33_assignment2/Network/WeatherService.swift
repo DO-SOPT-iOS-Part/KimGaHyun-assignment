@@ -6,14 +6,11 @@
 //
 import Foundation
 
-class WeatherService {
+final class WeatherService {
     
     static let shared = WeatherService()
     private init() {}
 
-   // private let apiKey = "c7c81491f7fd0225920b6378a5dd0d82"
-
-    
     //request
     func makeRequest(cityname: String) -> URLRequest {
         let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(cityname)&appid=c7c81491f7fd0225920b6378a5dd0d82")!
@@ -62,8 +59,5 @@ class WeatherService {
         return NetworkError(rawValue: errorCode)
         ?? NetworkError.unknownError
     }
-    
 
-    
 }
-

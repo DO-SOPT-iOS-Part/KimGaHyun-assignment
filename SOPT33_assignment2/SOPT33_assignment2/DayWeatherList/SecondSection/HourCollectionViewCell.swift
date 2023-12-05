@@ -7,23 +7,27 @@
 
 import UIKit
 
-class HourCollectionViewCell: UICollectionViewCell {
-    
-    static let identifier: String = "HourCollectionViewCell"
-    
-    private var timeLabel : UILabel = {
-        let label = UILabel()
-        label.font = .medium(size: 17)
-        label.textColor = .white
-        label.textAlignment = .center
-        return label
-    }()
+import Then
+import SnapKit
 
+// MARK: - 시간 별 날씨 Horizontal CollectionView Cell
+
+final class HourCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - set Properties
+    
+    private var timeLabel = UILabel()
     private var weatherImage = UIImageView()
     private var tempLabel = UILabel()
     
+    
+    // MARK: - Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        setUI()
+        setHierachy()
         setLayout()
     }
     
@@ -31,10 +35,31 @@ class HourCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setLayout() {
-        [timeLabel, weatherImage, tempLabel].forEach {
-            contentView.addSubview($0)
+    
+    // MARK: - set UI
+    
+    private func setUI() {
+        timeLabel.do {
+            $0.font = .medium(size: 17)
+            $0.textColor = .white
+            $0.textAlignment = .center
         }
+    }
+    
+    
+    // MARK: - set Hierachy
+    
+    private func setHierachy() {
+        
+        contentView.addSubviews(timeLabel,
+                                weatherImage,
+                                tempLabel)
+    }
+    
+    
+    // MARK: - set Layout
+    
+    private func setLayout() {
         timeLabel.snp.makeConstraints {
             $0.top.equalTo(contentView.snp.top).inset(20)
         }
@@ -46,7 +71,6 @@ class HourCollectionViewCell: UICollectionViewCell {
         tempLabel.snp.makeConstraints {
             $0.top.equalTo(weatherImage.snp.bottom).offset(20)
         }
-        
     }
     
     
@@ -57,4 +81,3 @@ class HourCollectionViewCell: UICollectionViewCell {
         
     }
 }
-

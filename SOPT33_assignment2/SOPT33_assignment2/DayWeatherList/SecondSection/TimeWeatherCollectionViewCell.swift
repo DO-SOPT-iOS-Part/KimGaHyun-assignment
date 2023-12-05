@@ -6,30 +6,19 @@
 //
 
 import UIKit
+
 import SnapKit
+import Then
+
+// MARK: - 시간 별 날씨
 
 final class TimeWeatherCollectionViewCell: UICollectionViewCell {
     
-    static let identifier: String = "TimeWeatherCollectionViewCell"
+    // MARK: - set Properties
     
-    private var timeLabel : UILabel = {
-        let label = UILabel()
-        label.font = .medium(size: 17)
-        label.textColor = .white
-        label.textAlignment = .center
-        return label
-    }()
-
-    
+    private var timeLabel = UILabel()
     private var weatherImage = UIImageView()
-    private var tempLabel : UILabel = {
-        let label = UILabel()
-        label.font = .medium(size: 20)
-        label.textColor = .white
-        label.textAlignment = .center
-        return label
-    }()
-    
+    private var tempLabel = UILabel()
 
     private let detailCollecitonView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -43,33 +32,79 @@ final class TimeWeatherCollectionViewCell: UICollectionViewCell {
     }()
     
     
+    // MARK: - Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-        self.layer.cornerRadius = 20
-        self.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2).cgColor
-        self.layer.borderWidth = 0.5
         
-        self.detailCollecitonView.register(HourCollectionViewCell.self, forCellWithReuseIdentifier: HourCollectionViewCell.identifier)
-  
-        self.detailCollecitonView.backgroundColor = .clear
-        self.detailCollecitonView.delegate = self
-        self.detailCollecitonView.dataSource = self
-        self.setcollectionLayout()
+        setUI()
+        setHierachy()
+        setLayout()
+        
+        setDelegate()
+        setupCollectionView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setcollectionLayout() {
-        self.contentView.addSubview(detailCollecitonView)
+    
+    // MARK: - set UI
+    
+    private func setUI() {
+        detailCollecitonView.backgroundColor = .clear
+        
+        timeLabel.do {
+            $0.font = .medium(size: 17)
+            $0.textColor = .white
+            $0.textAlignment = .center
+        }
+        
+        tempLabel.do {
+            $0.font = .medium(size: 20)
+            $0.textColor = .white
+            $0.textAlignment = .center
+        }
+        
+        self.layer.cornerRadius = 20
+        self.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2).cgColor
+        self.layer.borderWidth = 0.5
+    }
+    
+    
+    // MARK: - set Hierachy
+    
+    private func setHierachy() {
+        contentView.addSubview(detailCollecitonView)
+    }
+    
+    
+    // MARK: - set Layout
+    
+    private func setLayout() {
         detailCollecitonView.snp.makeConstraints {
             $0.top.trailing.equalToSuperview()
             $0.leading.equalToSuperview().inset(15)
             $0.bottom.equalToSuperview()
         }
     }
+    
+    
+    // MARK: - set Delegate
+    
+    private func setDelegate() {
+        self.detailCollecitonView.delegate = self
+        self.detailCollecitonView.dataSource = self
+    }
+    
+    
+    // MARK: - set CollectionView
+    
+    private func setupCollectionView() {
+        self.detailCollecitonView.register(HourCollectionViewCell.self, forCellWithReuseIdentifier: HourCollectionViewCell.className)
+    }
+    
     
     func bindData(data: TimeWeatherListData) {
         self.timeLabel.text = data.time
@@ -78,6 +113,7 @@ final class TimeWeatherCollectionViewCell: UICollectionViewCell {
     }
 }
 
+// CollectionViewCell 크기 설정
 extension TimeWeatherCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 55, height: 120)
@@ -88,11 +124,11 @@ extension TimeWeatherCollectionViewCell: UICollectionViewDelegateFlowLayout {
 extension TimeWeatherCollectionViewCell: UICollectionViewDelegate {}
 extension TimeWeatherCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return TimeweatherList.count
+        return TimeweatherList.count    //Data의 갯수 == Horizontal CollectionView Cell 갯수
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: HourCollectionViewCell.identifier,for: indexPath) as? HourCollectionViewCell else {return UICollectionViewCell()}
+        guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: HourCollectionViewCell.className,for: indexPath) as? HourCollectionViewCell else {return UICollectionViewCell()}
         item.bindData(data: TimeweatherList[indexPath.row])
         return item
     }

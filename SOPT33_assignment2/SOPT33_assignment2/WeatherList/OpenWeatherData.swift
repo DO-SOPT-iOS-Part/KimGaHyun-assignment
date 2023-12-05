@@ -5,10 +5,10 @@
 //  Created by Gahyun Kim on 2023/11/12.
 //
 
-import Foundation
 import UIKit
 
 // MARK: - CurrentWeatherDataModel
+
 struct OpenWeatherData: Codable {
     let coord: Coord
     let weather: [Weather]
@@ -25,16 +25,19 @@ struct OpenWeatherData: Codable {
 }
 
 // MARK: - Clouds
+
 struct Clouds: Codable {
     let all: Int
 }
 
 // MARK: - Coord
+
 struct Coord: Codable {
     let lon, lat: Double
 }
 
 // MARK: - Main
+
 struct Main: Codable {
     let temp, feelsLike, tempMin, tempMax: Double
     let pressure, humidity: Int
@@ -49,6 +52,7 @@ struct Main: Codable {
 }
 
 // MARK: - Sys
+
 struct Sys: Codable {
     let type : Int?
     let id: Int?
@@ -57,12 +61,14 @@ struct Sys: Codable {
 }
 
 // MARK: - Weather
+
 struct Weather: Codable {
     let id: Int
     let main, description, icon: String
 }
 
 // MARK: - Wind
+
 struct Wind: Codable {
     let speed: Double
     let deg: Int

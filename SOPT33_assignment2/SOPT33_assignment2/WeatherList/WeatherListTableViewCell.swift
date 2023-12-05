@@ -6,60 +6,29 @@
 //
 
 import UIKit
+
 import Then
 import SnapKit
 
-class WeatherListTableViewCell: UITableViewCell {
+final class WeatherListTableViewCell: UITableViewCell {
+        
+    // MARK: - set Properties
     
-    static let identifier : String = "WeatherListTableViewCell"
-    
-    private let backgroundImage = UIImageView().then {
-        $0.image = UIImage(named: "list")
-    }
-    
-
-    private let tableView = UITableView(frame: .zero, style: .plain).then {
-        $0.backgroundColor = .clear
-        $0.separatorStyle = .singleLine
-    }
-
-    
-    private let mainLabel = UILabel().then {
-        $0.font = .bold(size: 23)
-        $0.textColor = .white
-    }
+    private let backgroundImage = UIImageView()
+    private let tableView = UITableView(frame: .zero, style: .plain)
+    private let mainLabel = UILabel()
+    private let timeLabel = UILabel()
+    private let weatherLabel = UILabel()
+    private let temperatureLabel = UILabel()
+    private let maxLabel = UILabel()
+    private let minLabel = UILabel()
     
     
-    private let timeLabel = UILabel().then {
-        $0.font = .medium(size: 17)
-        $0.textColor = .white
-    }
-    
-    private let weatherLabel = UILabel().then {
-        $0.font = .medium(size: 17)
-        $0.textColor = .white
-    }
-    
-    private let temperatureLabel = UILabel().then {
-        $0.font = .light(size: 53)
-        $0.textColor = .white
-    }
-    
-    private let maxLabel = UILabel().then {
-        $0.font = .medium(size: 16)
-        $0.textColor = .white
-    }
-    
-    private let minLabel = UILabel().then {
-        $0.font = .medium(size: 16)
-        $0.textColor = .white
-    }
-    
+    // MARK: - Life Cycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
             super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
-
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -67,16 +36,66 @@ class WeatherListTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        setUI()
+        setHierachy()
         setLayout()
     }
     
-    private func setLayout() {
     
+    // MARK: - set UI
+    
+    private func setUI() {
         self.backgroundView = backgroundImage
-
-        [backgroundImage].forEach {
-            self.contentView.addSubview($0)
+        
+        backgroundImage.do {
+            $0.image = UIImage(named: "list")
         }
+        
+        tableView.do {
+            $0.backgroundColor = .clear
+            $0.separatorStyle = .singleLine
+        }
+        
+        mainLabel.do {
+            $0.font = .bold(size: 23)
+        }
+        
+        temperatureLabel.do {
+            $0.font = .light(size: 53)
+        }
+        
+        [timeLabel, weatherLabel].forEach {
+            $0.font = .medium(size: 17)
+        }
+        
+        [maxLabel, minLabel].forEach {
+            $0.font = .medium(size: 16)
+        }
+        
+        [mainLabel, timeLabel, weatherLabel, temperatureLabel, maxLabel, minLabel].forEach {
+            $0.textColor = .white
+        }
+        
+    }
+    
+    
+    // MARK: - set Hierachy
+    
+    private func setHierachy() {
+        contentView.addSubview(backgroundImage)
+
+        backgroundImage.addSubviews(mainLabel,
+                                    timeLabel,
+                                    weatherLabel,
+                                    temperatureLabel,
+                                    maxLabel,
+                                    minLabel)
+    }
+    
+    
+    // MARK: - set Layout
+    
+    private func setLayout() {
         
         backgroundImage.snp.makeConstraints {
             $0.top.equalToSuperview().offset(5)
@@ -84,9 +103,6 @@ class WeatherListTableViewCell: UITableViewCell {
             $0.leading.trailing.equalToSuperview().inset(20)
         }
         
-        [mainLabel, timeLabel, weatherLabel, temperatureLabel, maxLabel, minLabel].forEach {
-            self.backgroundImage.addSubview($0)
-        }
 
         mainLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10)

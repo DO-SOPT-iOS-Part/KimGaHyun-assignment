@@ -6,20 +6,23 @@
 //
 
 import UIKit
-import SnapKit
 
-class ViewController: UIViewController, UISearchControllerDelegate {
+import SnapKit
+import Then
+
+final class ViewController: UIViewController, UISearchControllerDelegate {
+    
+    // MARK: - set Properties
     
     var searchWeatherListData = weatherList //검색 결과 데이터
-    private lazy var etcButton : UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "menu"), for: .normal)
-        return button
-    }()
-
+    private lazy var etcButton = UIButton()
+    private let searchController = UISearchController(searchResultsController: nil)
+    private let tableView = UITableView(frame: .zero, style: .plain)
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
         
         //api key test
         guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String else { return }
@@ -28,12 +31,15 @@ class ViewController: UIViewController, UISearchControllerDelegate {
         Task {
             await fetchWeatherInfo()
         }
-        
-        setupSearchController()
+
+        setUI()
+        setHierachy()
         setLayout()
+        
+        setupNavigation()
+        setDelegate()
         setTableViewConfig()
     }
-    
     
     @objc func buttonPressed() {
         let resultVC = ResultViewController()  // ResultViewController 초기화
@@ -41,12 +47,9 @@ class ViewController: UIViewController, UISearchControllerDelegate {
     }
    
     
-    func setupSearchController() {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.placeholder = "도시 또는 공항 검색"
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchResultsUpdater = self
-        
+    // MARK: - set Navigation
+    
+    func setupNavigation() {
         self.navigationItem.searchController = searchController
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = "날씨"
@@ -54,10 +57,38 @@ class ViewController: UIViewController, UISearchControllerDelegate {
     }
     
     
-    private func setLayout() {
+    // MARK: - set UI
+    
+    private func setUI() {
+        view.backgroundColor = .black
+        
+        etcButton.do {
+            $0.setImage(UIImage(named: "menu"), for: .normal)
+        }
+        
+        searchController.do {
+            $0.searchBar.placeholder = "도시 또는 공항 검색"
+            $0.hidesNavigationBarDuringPresentation = false
+            $0.searchResultsUpdater = self
+        }
+        
+        tableView.do {
+            $0.backgroundColor = .clear
+        }
+    }
+    
+    
+    // MARK: - set Hierachy
+    
+    private func setHierachy() {
         view.addSubview(tableView)
         view.addSubview(etcButton)
-        
+    }
+
+
+    // MARK: - set Layout
+    
+    private func setLayout() {
         etcButton.snp.makeConstraints {
             $0.top.equalToSuperview().inset(80)
             $0.trailing.equalToSuperview().inset(25)
@@ -71,17 +102,23 @@ class ViewController: UIViewController, UISearchControllerDelegate {
     }
     
     
+    // MARK: - set TableView
+    
     private func setTableViewConfig() {
         self.tableView.register(WeatherListTableViewCell.self,
                                 forCellReuseIdentifier: WeatherListTableViewCell.className)
+    }
+    
+    
+    // MARK: - set Delegate
+    
+    private func setDelegate() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
-    
 
-    private let tableView = UITableView(frame: .zero, style: .plain).then {
-        $0.backgroundColor = .clear
-    }
+
+    // MARK: - Network
 
     //API에서 가져오는 timezone 현재 시간으로 변경하기
     func convertTime(timezone: Int) -> String {
@@ -95,10 +132,17 @@ class ViewController: UIViewController, UISearchControllerDelegate {
     }
     
     private func fetchWeatherInfo() async {
-            let cityname = ["seoul", "daegu", "ulsan", "chuncheon", "jeju", "gwangju", "suwon", "iksan", "busan"]
+            let cityname = ["seoul",
+                            "daegu",
+                            "ulsan",
+                            "chuncheon",
+                            "jeju",
+                            "gwangju",
+                            "suwon",
+                            "iksan",
+                            "busan"]
             
             for city in cityname {
-//                print("❤️❤️", city)
                 do {
                     let currentWeather = try await WeatherService.shared.getWeatherData(cityname: city)
                     print("type:", type(of: currentWeather.timezone))
@@ -140,14 +184,13 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-//검색 기능
+
 //searchWeatherListData -> searchbar에 text가 있을 경우, 없을 경우 나누기 위해 기존의 weatherList 대입
 extension ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
         if text.isEmpty {
             searchWeatherListData = weatherList
-            print("🍎🍎🍎",searchWeatherListData.count)
         } else {
             searchWeatherListData = weatherList.filter { $0.location.lowercased().contains(text.lowercased()) }
         }

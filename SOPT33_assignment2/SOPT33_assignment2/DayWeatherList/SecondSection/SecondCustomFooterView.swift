@@ -7,13 +7,16 @@
 
 import UIKit
 
-// 2번째 section(시간 별  날씨)의 footerView
-class SecondCustomFooterView: UICollectionReusableView {
+// MARK: - 2번째 section(시간 별 날씨)의 footerView
+final class SecondCustomFooterView: UICollectionReusableView {
 
+    // MARK: - configure
     
     func configure() {
         backgroundColor = .clear
     }
+    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -20,7 +20,6 @@
 		838AA6872ADB93AF00CC766B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AA6862ADB93AF00CC766B /* ViewController.swift */; };
 		838AA68C2ADB93B100CC766B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 838AA68B2ADB93B100CC766B /* Assets.xcassets */; };
 		838AA68F2ADB93B100CC766B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 838AA68D2ADB93B100CC766B /* LaunchScreen.storyboard */; };
-		838AA6972ADB976D00CC766B /* Img.png in Resources */ = {isa = PBXBuildFile; fileRef = 838AA6962ADB976D00CC766B /* Img.png */; };
 		838AA69A2ADD675800CC766B /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 838AA6992ADD675800CC766B /* SF-Pro-Display-Bold.otf */; };
 		838AA69C2ADD677B00CC766B /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 838AA69B2ADD677B00CC766B /* SF-Pro-Display-Light.otf */; };
 		838AA69E2ADD678900CC766B /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 838AA69D2ADD678900CC766B /* SF-Pro-Display-Medium.otf */; };
@@ -34,7 +33,6 @@
 		839479952AEFF3D200DE7A90 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 839479942AEFF3D200DE7A90 /* SnapKit */; };
 		8394799B2AF3F0CD00DE7A90 /* DayWeatherListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8394799A2AF3F0CD00DE7A90 /* DayWeatherListData.swift */; };
 		8394799D2AF4A97800DE7A90 /* DayWeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8394799C2AF4A97800DE7A90 /* DayWeatherCollectionViewCell.swift */; };
-		83BA693F2AE025E3000AD795 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 83BA693E2AE025E3000AD795 /* list.png */; };
 		83DCC7B82AF8D270000EC679 /* TopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCC7B72AF8D270000EC679 /* TopCollectionViewCell.swift */; };
 		83DCC7BA2AF8D549000EC679 /* TimeWeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCC7B92AF8D549000EC679 /* TimeWeatherCollectionViewCell.swift */; };
 		83DCC7BC2AF8D715000EC679 /* TimeWeatherListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCC7BB2AF8D715000EC679 /* TimeWeatherListData.swift */; };
@@ -60,7 +58,6 @@
 		838AA68B2ADB93B100CC766B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		838AA68E2ADB93B100CC766B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		838AA6902ADB93B100CC766B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		838AA6962ADB976D00CC766B /* Img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Img.png; sourceTree = "<group>"; };
 		838AA6992ADD675800CC766B /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		838AA69B2ADD677B00CC766B /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
 		838AA69D2ADD678900CC766B /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
@@ -72,7 +69,6 @@
 		8394798C2AEFC38400DE7A90 /* WeatherListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListData.swift; sourceTree = "<group>"; };
 		8394799A2AF3F0CD00DE7A90 /* DayWeatherListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWeatherListData.swift; sourceTree = "<group>"; };
 		8394799C2AF4A97800DE7A90 /* DayWeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWeatherCollectionViewCell.swift; sourceTree = "<group>"; };
-		83BA693E2AE025E3000AD795 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
 		83DCC7B72AF8D270000EC679 /* TopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewCell.swift; sourceTree = "<group>"; };
 		83DCC7B92AF8D549000EC679 /* TimeWeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeWeatherCollectionViewCell.swift; sourceTree = "<group>"; };
 		83DCC7BB2AF8D715000EC679 /* TimeWeatherListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeWeatherListData.swift; sourceTree = "<group>"; };
@@ -106,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				83DCC7B92AF8D549000EC679 /* TimeWeatherCollectionViewCell.swift */,
-				83DCC7BB2AF8D715000EC679 /* TimeWeatherListData.swift */,
 				835E9E482AFBEE0300D5E4C5 /* HourCollectionViewCell.swift */,
 				834960842AFD4BAE00A78244 /* SecondCustomHeaderView.swift */,
 				834960862AFD4BBC00A78244 /* SecondCustomFooterView.swift */,
@@ -118,7 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				8394799C2AF4A97800DE7A90 /* DayWeatherCollectionViewCell.swift */,
-				8394799A2AF3F0CD00DE7A90 /* DayWeatherListData.swift */,
 				835E9E4A2AFCCB8200D5E4C5 /* CustomHeaderView.swift */,
 				8349607F2AFD42E300A78244 /* CustomFooterView.swift */,
 			);
@@ -128,8 +122,9 @@
 		834960C92B025B1400A78244 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				83FEC0532B1F7D3600D91AE4 /* Service */,
+				83FEC0522B1F7D2F00D91AE4 /* Data */,
 				834960C72B025AF800A78244 /* NetworkError.swift */,
-				834960C02B011B6500A78244 /* WeatherService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -154,13 +149,12 @@
 		838AA6812ADB93AF00CC766B /* SOPT33_assignment2 */ = {
 			isa = PBXGroup;
 			children = (
-				834960C92B025B1400A78244 /* Network */,
 				83FEC0422B1E158200D91AE4 /* Application */,
 				83FEC0432B1E159800D91AE4 /* Global */,
-				839479972AF3F06B00DE7A90 /* DayWeatherList */,
-				839479962AF3F05500DE7A90 /* WeatherList */,
-				838AA6962ADB976D00CC766B /* Img.png */,
-				83BA693E2AE025E3000AD795 /* list.png */,
+				834960C92B025B1400A78244 /* Network */,
+				83FEC04C2B1F7B3400D91AE4 /* Model */,
+				83FEC04A2B1F7AD700D91AE4 /* VC */,
+				83FEC04B2B1F7B1500D91AE4 /* Cell */,
 				838AA68D2ADB93B100CC766B /* LaunchScreen.storyboard */,
 				838AA6902ADB93B100CC766B /* Info.plist */,
 			);
@@ -178,28 +172,6 @@
 				838AA6992ADD675800CC766B /* SF-Pro-Display-Bold.otf */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		839479962AF3F05500DE7A90 /* WeatherList */ = {
-			isa = PBXGroup;
-			children = (
-				838AA6862ADB93AF00CC766B /* ViewController.swift */,
-				8394798A2AEFC31B00DE7A90 /* WeatherListTableViewCell.swift */,
-				8394798C2AEFC38400DE7A90 /* WeatherListData.swift */,
-				834960C22B011D2A00A78244 /* OpenWeatherData.swift */,
-			);
-			path = WeatherList;
-			sourceTree = "<group>";
-		};
-		839479972AF3F06B00DE7A90 /* DayWeatherList */ = {
-			isa = PBXGroup;
-			children = (
-				838AA6A62ADD79C100CC766B /* ResultViewController.swift */,
-				834960812AFD4B3900A78244 /* FirstSection */,
-				834960822AFD4B4400A78244 /* SecondSection */,
-				834960832AFD4B5800A78244 /* ThirdSection */,
-			);
-			path = DayWeatherList;
 			sourceTree = "<group>";
 		};
 		83FEC0412B1E156400D91AE4 /* Extension */ = {
@@ -229,6 +201,84 @@
 				83FEC0412B1E156400D91AE4 /* Extension */,
 			);
 			path = Global;
+			sourceTree = "<group>";
+		};
+		83FEC04A2B1F7AD700D91AE4 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				838AA6862ADB93AF00CC766B /* ViewController.swift */,
+				838AA6A62ADD79C100CC766B /* ResultViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		83FEC04B2B1F7B1500D91AE4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				83FEC04F2B1F7B8900D91AE4 /* WeatherList */,
+				83FEC04E2B1F7B7F00D91AE4 /* DetailWeatherList */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		83FEC04C2B1F7B3400D91AE4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				83FEC0512B1F7C7800D91AE4 /* WeatherList */,
+				83FEC0502B1F7C6C00D91AE4 /* DetailWeatherList */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		83FEC04E2B1F7B7F00D91AE4 /* DetailWeatherList */ = {
+			isa = PBXGroup;
+			children = (
+				834960812AFD4B3900A78244 /* FirstSection */,
+				834960822AFD4B4400A78244 /* SecondSection */,
+				834960832AFD4B5800A78244 /* ThirdSection */,
+			);
+			path = DetailWeatherList;
+			sourceTree = "<group>";
+		};
+		83FEC04F2B1F7B8900D91AE4 /* WeatherList */ = {
+			isa = PBXGroup;
+			children = (
+				8394798A2AEFC31B00DE7A90 /* WeatherListTableViewCell.swift */,
+			);
+			path = WeatherList;
+			sourceTree = "<group>";
+		};
+		83FEC0502B1F7C6C00D91AE4 /* DetailWeatherList */ = {
+			isa = PBXGroup;
+			children = (
+				8394799A2AF3F0CD00DE7A90 /* DayWeatherListData.swift */,
+				83DCC7BB2AF8D715000EC679 /* TimeWeatherListData.swift */,
+			);
+			path = DetailWeatherList;
+			sourceTree = "<group>";
+		};
+		83FEC0512B1F7C7800D91AE4 /* WeatherList */ = {
+			isa = PBXGroup;
+			children = (
+				8394798C2AEFC38400DE7A90 /* WeatherListData.swift */,
+			);
+			path = WeatherList;
+			sourceTree = "<group>";
+		};
+		83FEC0522B1F7D2F00D91AE4 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				834960C22B011D2A00A78244 /* OpenWeatherData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		83FEC0532B1F7D3600D91AE4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				834960C02B011B6500A78244 /* WeatherService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,8 +349,6 @@
 			files = (
 				838AA6A22ADD67A500CC766B /* SF-Pro-Display-Thin.otf in Resources */,
 				838AA69E2ADD678900CC766B /* SF-Pro-Display-Medium.otf in Resources */,
-				83BA693F2AE025E3000AD795 /* list.png in Resources */,
-				838AA6972ADB976D00CC766B /* Img.png in Resources */,
 				838AA69C2ADD677B00CC766B /* SF-Pro-Display-Light.otf in Resources */,
 				838AA68F2ADB93B100CC766B /* LaunchScreen.storyboard in Resources */,
 				838AA69A2ADD675800CC766B /* SF-Pro-Display-Bold.otf in Resources */,

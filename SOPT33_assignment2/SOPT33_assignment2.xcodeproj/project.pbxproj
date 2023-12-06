@@ -39,6 +39,7 @@
 		83FEC0452B1E162800D91AE4 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FEC0442B1E162800D91AE4 /* UIStackView+.swift */; };
 		83FEC0472B1E166700D91AE4 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FEC0462B1E166700D91AE4 /* NSObject+.swift */; };
 		83FEC0492B1F0F2400D91AE4 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FEC0482B1F0F2400D91AE4 /* UIView+.swift */; };
+		83FEC0552B1F91B300D91AE4 /* DetailWeatherList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FEC0542B1F91B300D91AE4 /* DetailWeatherList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		83FEC0442B1E162800D91AE4 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		83FEC0462B1E166700D91AE4 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 		83FEC0482B1F0F2400D91AE4 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		83FEC0542B1F91B300D91AE4 /* DetailWeatherList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeatherList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 		83FEC04E2B1F7B7F00D91AE4 /* DetailWeatherList */ = {
 			isa = PBXGroup;
 			children = (
+				83FEC0542B1F91B300D91AE4 /* DetailWeatherList.swift */,
 				834960812AFD4B3900A78244 /* FirstSection */,
 				834960822AFD4B4400A78244 /* SecondSection */,
 				834960832AFD4B5800A78244 /* ThirdSection */,
@@ -373,6 +376,7 @@
 				83DCC7BC2AF8D715000EC679 /* TimeWeatherListData.swift in Sources */,
 				83FEC0472B1E166700D91AE4 /* NSObject+.swift in Sources */,
 				83FEC0452B1E162800D91AE4 /* UIStackView+.swift in Sources */,
+				83FEC0552B1F91B300D91AE4 /* DetailWeatherList.swift in Sources */,
 				8394798D2AEFC38400DE7A90 /* WeatherListData.swift in Sources */,
 				838AA6872ADB93AF00CC766B /* ViewController.swift in Sources */,
 				834960C82B025AF800A78244 /* NetworkError.swift in Sources */,

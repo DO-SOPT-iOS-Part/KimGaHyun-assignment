@@ -11,26 +11,9 @@ import Then
 
 final class ResultViewController: UIViewController {
     
-    // MARK: - set Properties
+    // MARK: - Properties
     
-    private var contentView = UIImageView()
-    private var backgroundView =  UIImageView()
-    private let bottomdivideView = UIView()
-
-    private var mapImage = UIImageView()
-    private var currentImage = UIImageView()
-    private var dotImage = UIImageView()
-    private lazy var menuButton = UIButton()
-    private var bottomStackView = UIStackView()
-    
-    private let detailCollecitonView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 30) , height: (UIScreen.main.bounds.height - 6) / 3)
-        flowLayout.minimumLineSpacing = 5
-        flowLayout.minimumInteritemSpacing = 5
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        return collectionView
-    }()
+    private var resultView: DetailWeatherListView?
     
     
     // MARK: - Life Cycle
@@ -38,152 +21,64 @@ final class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUI()
-        setHierachy()
-        setLayout()
-        
-
+        setResultView()
         setDelegate()
         setupCollectionView()
-
-        self.navigationController?.navigationBar.isHidden = false
     }
     
-    //화면 뒤로 가기
+    
+    // MARK: - Button Action
+    
     @objc func buttonPressed() {
         print("BUTTON PRESSED")
         navigationController?.popViewController(animated: true)
     }
     
     
-    // MARK: - set UI
+    // MARK: - ResultView
     
-    private func setUI() {
-        contentView.backgroundColor = .clear
-        detailCollecitonView.backgroundColor = .clear
-        
-        backgroundView.do {
-            $0.image = #imageLiteral(resourceName: "background")
+    private func setResultView() {
+        resultView = DetailWeatherListView(frame: view.bounds)
+        if let resultView = resultView {
+            view.addSubview(resultView)
+            resultView.configure()
         }
         
-        bottomdivideView.do {
-            $0.backgroundColor = UIColor.white.withAlphaComponent(0.1)
-        }
-        
-        mapImage.do {
-            $0.image = #imageLiteral(resourceName: "map" )
-            $0.tintColor = UIColor(named: "yellow")
-        }
-        
-        currentImage.do {
-            $0.image = #imageLiteral(resourceName: "current")
-        }
-        
-        dotImage.do {
-            $0.image = #imageLiteral(resourceName: "other")
-        }
-        
-        menuButton.do {
-            $0.setImage(UIImage(named: "pre"), for: .normal)
-            $0.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        }
-        
-        bottomStackView.do {
-            $0.axis = .horizontal
-            $0.backgroundColor = .clear
-            $0.isUserInteractionEnabled = true
-            $0.spacing = 10
-        }
-    }
-    
-    
-    // MARK: - set Hierachy
-    
-    private func setHierachy() {
-        view.addSubviews(backgroundView,
-                         contentView,
-                         detailCollecitonView,
-                         bottomdivideView,
-                         bottomStackView)
-        
-        bottomStackView.addArrangedSubviews(currentImage,
-                                            dotImage)
-        
-        view.addSubviews(mapImage,
-                         menuButton)
-    }
-    
-
-    // MARK: - set Layout
-    
-    private func setLayout() {
-        backgroundView.snp.makeConstraints {
-            $0.centerX.centerY.width.height.equalToSuperview()
-        }
-        
-        contentView.snp.makeConstraints {
-            $0.top.bottom.leading.trailing.width.equalTo(view)
-            $0.height.greaterThanOrEqualTo(view).priority(.high) //?
-        }
-        
-        detailCollecitonView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(bottomdivideView.snp.top)
-        }
-        
-        bottomdivideView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(UIScreen.main.bounds.height-100)
-            $0.height.equalTo(0.5)
-            $0.width.equalTo(UIScreen.main.bounds.width)
-        }
-        
-        bottomStackView.snp.makeConstraints {
-            $0.top.equalTo(bottomdivideView.snp.bottom).offset(10)
-            $0.centerX.equalToSuperview()
-        }
-        mapImage.snp.makeConstraints {
-            $0.top.equalTo(bottomdivideView.snp.bottom).offset(2)
-            $0.leading.equalTo(view.snp.leading).offset(10)
-        }
-        
-        menuButton.snp.makeConstraints {
-            $0.top.equalTo(bottomdivideView.snp.bottom).offset(2)
-            $0.trailing.equalTo(view.snp.trailing).inset(20)
-        }
+        resultView?.menuButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
     
     
     // MARK: - set Delegate
     
     private func setDelegate() {
-        self.detailCollecitonView.delegate = self
-        self.detailCollecitonView.dataSource = self
+        resultView?.detailCollecitonView.delegate = self
+        resultView?.detailCollecitonView.dataSource = self
     }
     
     
     // MARK: - set CollectionView
     
     private func setupCollectionView() {
-        self.detailCollecitonView.register(TopCollectionViewCell.self,
+        resultView?.detailCollecitonView.register(TopCollectionViewCell.self,
                                            forCellWithReuseIdentifier: TopCollectionViewCell.className)
-        self.detailCollecitonView.register(TimeWeatherCollectionViewCell.self,
+        resultView?.detailCollecitonView.register(TimeWeatherCollectionViewCell.self,
                                            forCellWithReuseIdentifier: TimeWeatherCollectionViewCell.className)
-        self.detailCollecitonView.register(DayWeatherCollectionViewCell.self,
+        resultView?.detailCollecitonView.register(DayWeatherCollectionViewCell.self,
                                            forCellWithReuseIdentifier: DayWeatherCollectionViewCell.className)
         
-
+        
         //Header, Footer
-        self.detailCollecitonView.register(SecondCustomHeaderView.self,
+        resultView?.detailCollecitonView.register(SecondCustomHeaderView.self,
                                            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                            withReuseIdentifier: SecondCustomHeaderView.className)  //2번째 section
-        self.detailCollecitonView.register(SecondCustomFooterView.self,
+        resultView?.detailCollecitonView.register(SecondCustomFooterView.self,
                                            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
                                            withReuseIdentifier: SecondCustomFooterView.className) //2번째 section
         
-        self.detailCollecitonView.register(CustomHeaderView.self,
+        resultView?.detailCollecitonView.register(CustomHeaderView.self,
                                            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                            withReuseIdentifier: CustomHeaderView.className)  //3번째 section
-        self.detailCollecitonView.register(CustomFooterView.self,
+        resultView?.detailCollecitonView.register(CustomFooterView.self,
                                            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
                                            withReuseIdentifier: CustomFooterView.className) //3번째 section
     }
@@ -207,7 +102,6 @@ extension ResultViewController: UICollectionViewDelegateFlowLayout {
 
 extension ResultViewController: UICollectionViewDelegate {}
 extension ResultViewController: UICollectionViewDataSource {
-    
     //section 갯수
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3

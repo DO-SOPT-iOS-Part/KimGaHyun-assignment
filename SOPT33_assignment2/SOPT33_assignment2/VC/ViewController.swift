@@ -15,9 +15,8 @@ final class ViewController: UIViewController, UISearchControllerDelegate {
     // MARK: - set Properties
     
     var searchWeatherListData = weatherList //검색 결과 데이터
-    private lazy var etcButton = UIButton()
-    private let searchController = UISearchController(searchResultsController: nil)
-    private let tableView = UITableView(frame: .zero, style: .plain)
+    private var weatherListView : WeatherListView?
+    
     
     // MARK: - Life Cycle
     
@@ -31,11 +30,9 @@ final class ViewController: UIViewController, UISearchControllerDelegate {
         Task {
             await fetchWeatherInfo()
         }
-
-        setUI()
-        setHierachy()
-        setLayout()
         
+        setWeatherListView()
+     
         setupNavigation()
         setDelegate()
         setTableViewConfig()
@@ -50,72 +47,42 @@ final class ViewController: UIViewController, UISearchControllerDelegate {
     // MARK: - set Navigation
     
     func setupNavigation() {
-        self.navigationItem.searchController = searchController
+        self.navigationItem.searchController = weatherListView?.searchController
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = "날씨"
         self.navigationItem.hidesSearchBarWhenScrolling = false
     }
+
     
     
-    // MARK: - set UI
+    // MARK: - set main View
     
-    private func setUI() {
-        view.backgroundColor = .black
-        
-        etcButton.do {
-            $0.setImage(UIImage(named: "menu"), for: .normal)
+    private func setWeatherListView() {
+        weatherListView = WeatherListView(frame: view.bounds)
+        if let resultView = weatherListView {
+            view.addSubview(resultView)
+            resultView.configure()
         }
-        
-        searchController.do {
-            $0.searchBar.placeholder = "도시 또는 공항 검색"
-            $0.hidesNavigationBarDuringPresentation = false
-            $0.searchResultsUpdater = self
-        }
-        
-        tableView.do {
-            $0.backgroundColor = .clear
-        }
-    }
-    
-    
-    // MARK: - set Hierachy
-    
-    private func setHierachy() {
-        view.addSubviews(tableView, etcButton)
+        // 검색 
+        weatherListView?.searchController.searchResultsUpdater = self
     }
 
-
-    // MARK: - set Layout
     
-    private func setLayout() {
-        etcButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(80)
-            $0.trailing.equalToSuperview().inset(25)
-        }
-
-        tableView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(55)
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(view.snp.bottom)
-        }
+    // MARK: - set Delegate
+    
+    private func setDelegate() {
+        weatherListView?.tableView.delegate = self
+        weatherListView?.tableView.dataSource = self
     }
     
     
     // MARK: - set TableView
     
     private func setTableViewConfig() {
-        self.tableView.register(WeatherListTableViewCell.self,
+        weatherListView?.tableView.register(WeatherListTableViewCell.self,
                                 forCellReuseIdentifier: WeatherListTableViewCell.className)
     }
     
-    
-    // MARK: - set Delegate
-    
-    private func setDelegate() {
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-    }
-
 
     // MARK: - Network
 
@@ -157,7 +124,7 @@ final class ViewController: UIViewController, UISearchControllerDelegate {
                     print(error)
                 }
             }
-            tableView.reloadData()
+            weatherListView?.tableView.reloadData()
         }
 }
 
@@ -193,6 +160,6 @@ extension ViewController: UISearchResultsUpdating {
         } else {
             searchWeatherListData = weatherList.filter { $0.location.lowercased().contains(text.lowercased()) }
         }
-    tableView.reloadData()
+        weatherListView?.tableView.reloadData()
     }
 }

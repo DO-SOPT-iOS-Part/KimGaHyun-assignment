@@ -9,7 +9,7 @@ import UIKit
 
 enum ImageLiterals {
     enum img {
-        static var backgroud: UIImage { .load(named: "backgroud")}
+        static var background: UIImage { .load(named: "background")}
         static var list: UIImage { .load(named: "list")}
     }
     

@@ -58,7 +58,7 @@ final class DetailWeatherListView: UIView {
         detailCollecitonView.backgroundColor = .clear
         
         backgroundView.do {
-            $0.image = #imageLiteral(resourceName: "background")
+            $0.image = ImageLiterals.img.background
         }
         
         bottomdivideView.do {
@@ -66,19 +66,20 @@ final class DetailWeatherListView: UIView {
         }
         
         mapImage.do {
-            $0.image = #imageLiteral(resourceName: "map" )
+            $0.image = ImageLiterals.icon.map
         }
         
         currentImage.do {
-            $0.image = #imageLiteral(resourceName: "current")
+            $0.image = ImageLiterals.icon.current
         }
         
         dotImage.do {
-            $0.image = #imageLiteral(resourceName: "other")
+            $0.image = ImageLiterals.icon.other
         }
         
         menuButton.do {
-            $0.setImage(UIImage(named: "pre"), for: .normal)
+            $0.setImage(ImageLiterals.icon.pre, for: .normal)
+            
         }
         
         bottomStackView.do {

@@ -48,7 +48,7 @@ final class WeatherListTableViewCell: UITableViewCell {
         self.backgroundView = backgroundImage
         
         backgroundImage.do {
-            $0.image = UIImage(named: "list")
+            $0.image = ImageLiterals.img.list
         }
         
         tableView.do {

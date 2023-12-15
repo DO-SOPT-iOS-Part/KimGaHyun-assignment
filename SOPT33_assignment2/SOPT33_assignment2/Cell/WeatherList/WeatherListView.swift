@@ -43,7 +43,7 @@ final class WeatherListView: UIView {
         self.backgroundColor = .black
         
         etcButton.do {
-            $0.setImage(UIImage(named: "menu"), for: .normal)
+            $0.setImage(ImageLiterals.icon.menu, for: .normal)
         }
         
         searchController.do {

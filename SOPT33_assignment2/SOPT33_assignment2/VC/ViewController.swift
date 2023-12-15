@@ -55,7 +55,7 @@ final class ViewController: UIViewController, UISearchControllerDelegate {
 
     
     
-    // MARK: - set main View
+    // MARK: - set WeatherList View
     
     private func setWeatherListView() {
         weatherListView = WeatherListView(frame: view.bounds)

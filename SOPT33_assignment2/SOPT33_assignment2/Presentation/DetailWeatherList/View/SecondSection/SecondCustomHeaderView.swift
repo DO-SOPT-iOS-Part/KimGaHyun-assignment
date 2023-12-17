@@ -31,7 +31,7 @@ final class SecondCustomHeaderView: UICollectionReusableView {
     
     func configure() {
         setUI()
-        setHierachy()
+        setHierarchy()
         setLayout()
     }
     
@@ -49,9 +49,9 @@ final class SecondCustomHeaderView: UICollectionReusableView {
     }
     
     
-    // MARK: - set Hierachy
+    // MARK: - set Hierarchy
     
-    private func setHierachy() {
+    private func setHierarchy() {
         addSubview(descriptLabel)
     }
     

@@ -38,7 +38,7 @@ final class TimeWeatherCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         setUI()
-        setHierachy()
+        setHierarchy()
         setLayout()
         
         setDelegate()
@@ -73,9 +73,9 @@ final class TimeWeatherCollectionViewCell: UICollectionViewCell {
     }
     
     
-    // MARK: - set Hierachy
+    // MARK: - set Hierarchy
     
-    private func setHierachy() {
+    private func setHierarchy() {
         contentView.addSubview(detailCollecitonView)
     }
     

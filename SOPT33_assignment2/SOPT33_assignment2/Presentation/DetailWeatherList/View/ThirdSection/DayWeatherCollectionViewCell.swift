@@ -11,6 +11,7 @@ import Then
 import SnapKit
 
 // MARK: - 요일 별 날씨
+
 final class DayWeatherCollectionViewCell: UICollectionViewCell {
    
     // MARK: - set Properties
@@ -33,7 +34,7 @@ final class DayWeatherCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         setUI()
-        setHierachy()
+        setHierarchy()
         setLayout()
     }
     
@@ -91,9 +92,9 @@ final class DayWeatherCollectionViewCell: UICollectionViewCell {
     }
     
     
-    // MARK: - set Hierachy
+    // MARK: - set Hierarchy
     
-    private func setHierachy() {
+    private func setHierarchy() {
         weatherStack.addArrangedSubviews(weatherImage,
                                          percent)
 

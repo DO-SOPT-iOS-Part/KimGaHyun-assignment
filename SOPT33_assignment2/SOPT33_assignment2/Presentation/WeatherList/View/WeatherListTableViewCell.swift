@@ -37,7 +37,7 @@ final class WeatherListTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         setUI()
-        setHierachy()
+        setHierarchy()
         setLayout()
     }
     
@@ -48,7 +48,7 @@ final class WeatherListTableViewCell: UITableViewCell {
         self.backgroundView = backgroundImage
         
         backgroundImage.do {
-            $0.image = UIImage(named: "list")
+            $0.image = ImageLiterals.img.list
         }
         
         tableView.do {
@@ -79,9 +79,9 @@ final class WeatherListTableViewCell: UITableViewCell {
     }
     
     
-    // MARK: - set Hierachy
+    // MARK: - set Hierarchy
     
-    private func setHierachy() {
+    private func setHierarchy() {
         contentView.addSubview(backgroundImage)
 
         backgroundImage.addSubviews(mainLabel,
